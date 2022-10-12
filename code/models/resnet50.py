@@ -27,13 +27,13 @@ class ResNet50(pl.LightningModule):
         self.log("val_acc", acc)
         self.log("val_loss", loss)
 
-    def test_step(self, batch, batch_idx: Union[int, list, None]):
+    def test_step(self, batch: tuple, batch_idx: Union[int, list, None]):
         imgs, labels = batch
         preds = self.model(imgs).argmax(dim=-1)
         acc = (labels == preds).float().mean()
         self.log("test_acc", acc)
 
-    def predict_step(self, batch, batch_idx, dataloader_idx=0):
+    def predict_step(self, batch: tuple, batch_idx, dataloader_idx=0):
         if len(batch) == 1:
             imgs = batch[0]
         else:
