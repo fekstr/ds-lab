@@ -28,8 +28,8 @@ class PreprocessingSVS:
         del slide
 
     def resize_to_target_mpp(self) -> None:
-        new_x = math.floor(self.slide_dim[0] / self.scale_factor)
-        new_y = math.floor(self.slide_dim[1] / self.scale_factor)
+        new_x = math.floor(self.slide_dim[0] * self.scale_factor)
+        new_y = math.floor(self.slide_dim[1] * self.scale_factor)
         self.image = self.image.resize((new_x, new_y), PIL.Image.BICUBIC)
 
     def crop(self) -> None:
