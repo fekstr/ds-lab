@@ -3,6 +3,9 @@ import math
 
 import PIL
 import openslide
+from torchvision import transforms
+import torchstain
+import numpy as np
 
 
 TARGET_MPP = 0.5
@@ -29,24 +32,31 @@ class PreprocessingSVS:
         self.image = self.image.resize((new_x, new_y), PIL.Image.BICUBIC)
 
 
-    def crop_and_normalise(self):
+    def crop(self):
         if self.image.size[0] > TARGET_DIM and self.image.size[1] > TARGET_DIM:
             offset_x = round((self.image.size[0] - TARGET_DIM)/2)
             offset_y = round((self.image.size[1] - TARGET_DIM)/2)
-            self.image = self.image.crop((offset_x, offset_y, offset_x + TARGET_DIM-1, offset_y + TARGET_DIM-1))
+            self.image = self.image.crop((offset_x, offset_y, offset_x + TARGET_DIM, offset_y + TARGET_DIM))
         else:
             print('WRONG IMAGE DIMENSION... will skip this image')
 
     def normalise(self):
-        #### TO DO ########
-        if self.image.size[0] > TARGET_DIM and self.image.size[1] > TARGET_DIM:
-            pass
+        T = transforms.Compose([transforms.ToTensor(), transforms.Lambda(lambda x: x*255)])
+        torch_normaliser = torchstain.normalizers.MacenkoNormalizer(backend='torch')
+        target = PIL.Image.open('./Ref.png')
+        torch_normaliser.fit(T(target))
+        norm, _, _ = torch_normaliser.normalize(I=T(self.image), stains=True)
+        self.image = PIL.Image.fromarray(np.uint8(norm.numpy())).convert('RGB')
 
     def save(self):
         self.image.save("TCGA-AA-3516.png")
 
+
 if __name__ == "__main__":
-    preprocess = PreprocessingSVS("TCGA-AA-3516.svs")
+    preprocess = PreprocessingSVS('TCGA-AA-3516.svs')
     preprocess.resize_to_target_mpp()
-    preprocess.crop_and_normalise()
+    preprocess.crop()
+    preprocess.normalise()
     preprocess.save()
+
+
