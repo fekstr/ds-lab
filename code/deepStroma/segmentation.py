@@ -2,14 +2,16 @@ from turtle import width
 from PIL import Image, ImageOps
 import numpy as np
 from collections import defaultdict
+import torch
+from torchvision.models import resnet50, ResNet50_Weights
 
 BATCH_SIZE = 8
-CLASSIFIER_WIDTH = 255
-CLASSIFIER_HEIGHT = 255
+CLASSIFIER_WIDTH = 224
+CLASSIFIER_HEIGHT = 224
 
 
 class Segmentation:
-    def __init__(self, fun=None, padding=90, stride=90) -> None:
+    def __init__(self, fun=None, padding=45, stride=90) -> None:
         if fun:
             self.__fun = fun
         else:
@@ -29,9 +31,21 @@ class Segmentation:
 
     def __segment(self, images) -> None:
         for ind, image in enumerate(images):
-            images[ind] = np.pad(np.array(image), pad_width=self.padding)
+            images[ind] = np.moveaxis(
+                np.pad(
+                    np.array(image),
+                    [
+                        (self.padding, self.padding),
+                        (self.padding, self.padding),
+                        (0, 0),
+                    ],
+                    mode="constant",
+                ),
+                -1,
+                0,
+            )
 
-        (width, height, _) = images[0].shape
+        (_, width, height) = images[0].shape
         width_n_steps = int(
             (width - CLASSIFIER_WIDTH + 2 * self.padding) / self.stride + 1
         )
@@ -40,40 +54,46 @@ class Segmentation:
         )
 
         ## the buffer is to reduce number of calls to the classifier
-        image_buffer = list()
+        image_buffer = torch.empty((BATCH_SIZE, 3, CLASSIFIER_WIDTH, CLASSIFIER_HEIGHT))
         buffer_indices = list()
         self.segmented_values = defaultdict(list)
         for i, image in enumerate(images):
-            for j in range(width_n_steps):
-                for k in range(height_n_steps):
+            for j in range(width_n_steps - 1):
+                for k in range(height_n_steps - 1):
                     buffer_indices.append(i)
-                    image_buffer.append(
+
+                    image_buffer[len(buffer_indices) - 1] = torch.tensor(
                         image[
+                            :,
                             j * self.stride : j * self.stride + CLASSIFIER_WIDTH,
                             k * self.stride : k * self.stride + CLASSIFIER_HEIGHT,
-                            :,
                         ]
                     )
+
                     if len(buffer_indices) == BATCH_SIZE:
                         classes = self.__fun(image_buffer)
-                        for ind in range(len(classes)):
+                        for ind in range(len(buffer_indices)):
                             self.segmented_values[buffer_indices[ind]].append(
-                                classes[ind]
+                                classes[ind].detach().numpy()
                             )
-                        image_buffer = list()
+                        image_buffer = torch.empty(
+                            (BATCH_SIZE, 3, CLASSIFIER_WIDTH, CLASSIFIER_HEIGHT)
+                        )
                         buffer_indices = list()
 
         if image_buffer != []:
             classes = self.__fun(image_buffer)
-            for ind in range(len(classes)):
-                self.segmented_values[buffer_indices[ind]].append(classes[ind])
+            for ind in range(len(buffer_indices)):
+                self.segmented_values[buffer_indices[ind]].append(
+                    classes[ind].detach().numpy()
+                )
 
-    ## to be replaced with pytorch classifier
+    ## to be replaced with our pytorch classifier
     def __placeholder(self, images) -> list():
-        y = list()
-        for image in images:
-            y.append(np.random.choice(range(9), size=1)[0])
-        return y
+        print("Batch -/-")
+        weights = ResNet50_Weights.DEFAULT
+        model = resnet50(weights=weights)
+        return model(images).squeeze(0).softmax(0)
 
 
 if __name__ == "__main__":
