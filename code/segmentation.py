@@ -68,8 +68,8 @@ class Segmentation:
                 np.array(image),
                 [
                     (0, 0),
-                    (0, image.shape[1] % CLASSIFIER_WIDTH),
-                    (0, image.shape[2] % CLASSIFIER_HEIGHT),
+                    (0, self.padding_width[ind]),
+                    (0, self.padding_hight[ind]),
                 ],
                 mode="constant",
             )
@@ -148,7 +148,7 @@ class Segmentation:
 
         ## supports overlapping segments (sums up probabilities of each pixel)
         for key, value in self.segmented_values.items():
-            print("Generating segmentating map for image", key)
+            print("Generating segmentation map for image", key)
 
             probabilities = np.zeros(
                 (self.images[key].shape[1], self.images[key].shape[2], NUM_CLASSES)
@@ -179,7 +179,7 @@ class Segmentation:
 
 
 if __name__ == "__main__":
-    im1 = Image.open("TCGA-AA-3516.png")
-    im2 = ImageOps.flip(Image.open("TCGA-AA-3516.png"))
+    im1 = Image.open("preprocess_full_images/TCGA-AA-3516.png")
+    im2 = ImageOps.flip(Image.open("preprocess_full_images/TCGA-AA-3516.png"))
     segment = Segmentation()
     print(segment.get_segmentation_matrices(np.array([im1, im2])))
