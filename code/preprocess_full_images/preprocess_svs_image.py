@@ -16,6 +16,7 @@ class PreprocessingSVS:
     def __init__(self, image_path, target_path=None) -> None:
         # read slide
         slide = openslide.OpenSlide(image_path)
+        self.image_path = image_path
 
         # keep only best slide for mpp resampling
         self.scale_factor = float(slide.properties["openslide.mpp-x"]) / TARGET_MPP
@@ -53,7 +54,7 @@ class PreprocessingSVS:
         self.image = PIL.Image.fromarray(np.uint8(norm.numpy())).convert("RGB")
 
     def save(self) -> None:
-        self.image.save("TCGA-AA-3516.png")
+        self.image.save(self.image_path.split(".")[0] + "_processed.png")
 
 
 if __name__ == "__main__":
