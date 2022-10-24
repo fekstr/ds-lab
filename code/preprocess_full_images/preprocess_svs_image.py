@@ -14,23 +14,34 @@ TARGET_DIM = 1500
 
 class PreprocessingSVS:
     def __init__(self, image_path, target_path=None) -> None:
-        # read slide
-        slide = openslide.OpenSlide(image_path)
         self.image_path = image_path
+        if not target_path:
+            self.target_path = image_path.split(".")[0] + "_processed.tif"
+        else:
+            self.target_path = target_path
 
-        # keep only best slide for mpp resampling
-        self.scale_factor = float(slide.properties["openslide.mpp-x"]) / TARGET_MPP
-        self.slide_dim = slide.dimensions
-        level = slide.get_best_level_for_downsample(self.scale_factor)
-        self.image = slide.read_region(
-            (0, 0), level, slide.level_dimensions[level]
-        ).convert("RGB")
+        # read slide
+        if image_path.split(".")[1] == "svs":
+            self.if_svs = True
+            slide = openslide.OpenSlide(image_path)
 
-        del slide
+            # keep only best slide for mpp resampling
+            self.scale_factor = float(slide.properties["openslide.mpp-x"]) / TARGET_MPP
+            self.image_dim = slide.dimensions
+            level = slide.get_best_level_for_downsample(self.scale_factor)
+            self.image = slide.read_region(
+                (0, 0), level, slide.level_dimensions[level]
+            ).convert("RGB")
+            del slide
+
+        else:
+            self.if_svs = False
+            self.image = PIL.Image.open(image_path)
+            self.image_dim = self.image.size
 
     def resize_to_target_mpp(self) -> None:
-        new_x = math.floor(self.slide_dim[0] * self.scale_factor)
-        new_y = math.floor(self.slide_dim[1] * self.scale_factor)
+        new_x = math.floor(self.image_dim[0] * self.scale_factor)
+        new_y = math.floor(self.image_dim[1] * self.scale_factor)
         self.image = self.image.resize((new_x, new_y), PIL.Image.BICUBIC)
 
     def crop(self) -> None:
@@ -54,12 +65,19 @@ class PreprocessingSVS:
         self.image = PIL.Image.fromarray(np.uint8(norm.numpy())).convert("RGB")
 
     def save(self) -> None:
-        self.image.save(self.image_path.split(".")[0] + "_processed.png")
+        self.image.save(self.target_path)
 
 
 if __name__ == "__main__":
+
+    ## big image preprocessing (Daniel)
     preprocess = PreprocessingSVS("TCGA-AA-3516.svs")
     preprocess.resize_to_target_mpp()
     preprocess.crop()
+    preprocess.normalise()
+    preprocess.save()
+
+    ## 224x224 image preprocessing (Frithiof)
+    preprocess = PreprocessingSVS("ADI-TCGA-AAICEQFN.tif")
     preprocess.normalise()
     preprocess.save()
