@@ -1,0 +1,12 @@
+name: ds_lab
+channels:
+  - pytorch
+  - https://conda.anaconda.org/conda-forge/
+  - defaults
+dependencies:
+  - python=3.9
+  - torchaudio
+  - pytorch
+  - torchvision
+  - cudatoolkit=11.3
+prefix: C:\Users\dantg\anaconda3\envs\ds_lab
