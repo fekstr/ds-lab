@@ -2,11 +2,15 @@ from tkinter import Y
 import math
 
 import PIL
+
 # The path can also be read from a config file, etc.
-OPENSLIDE_PATH = r'C:\\Users\\dantg\\openslide-win64-20220811\\openslide-win64-20220811\\bin'
+OPENSLIDE_PATH = (
+    r"C:\\Users\\dantg\\openslide-win64-20220811\\openslide-win64-20220811\\bin"
+)
 
 import os
-if hasattr(os, 'add_dll_directory'):
+
+if hasattr(os, "add_dll_directory"):
     # Python >= 3.8 on Windows
     with os.add_dll_directory(OPENSLIDE_PATH):
         import openslide
@@ -61,7 +65,7 @@ class PreprocessingSVS:
                 (offset_x, offset_y, offset_x + TARGET_DIM, offset_y + TARGET_DIM)
             )
         else:
-            print("WRONG IMAGE DIMENSION... will skip this image")
+            print("WRONG IMAGE DIMENSION... will skip this Image ", self.image_path)
 
     def normalise(self) -> None:
         T = transforms.Compose(
@@ -70,8 +74,11 @@ class PreprocessingSVS:
         torch_normaliser = torchstain.normalizers.MacenkoNormalizer(backend="torch")
         target = PIL.Image.open("./Ref.png")
         torch_normaliser.fit(T(target))
-        norm, _, _ = torch_normaliser.normalize(I=T(self.image), stains=True)
-        self.image = PIL.Image.fromarray(np.uint8(norm.numpy())).convert("RGB")
+        try:
+            norm, _, _ = torch_normaliser.normalize(I=T(self.image), stains=True)
+            self.image = PIL.Image.fromarray(np.uint8(norm.numpy())).convert("RGB")
+        except:
+            print("WARNING: Normalisation skipped for Image ", self.image_path)
 
     def save(self) -> None:
         self.image.save(self.target_path)
