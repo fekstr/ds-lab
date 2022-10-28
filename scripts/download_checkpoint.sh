@@ -1,3 +1,1 @@
-wget https://polybox.ethz.ch/index.php/s/ND9SQibca5TbVLI/download -O ./checkpoint.ckpt
-
-
+wget https://polybox.ethz.ch/index.php/s/1P09B4TGi6SLumC/download -O ./checkpoint.ckpt
