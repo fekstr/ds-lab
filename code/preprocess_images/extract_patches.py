@@ -21,6 +21,7 @@ import sys
 
 type = sys.argv[1]
 i = int(sys.argv[2])
+outputFolder = sys.argv[3]
 datapath = '../../../WSS1-v1/'
 files = zip(['train', 'test'], range(1,6))
 tileSize = 224
@@ -62,10 +63,10 @@ for c in range(col):
             vote[poly['class']] = vote.get(poly['class'], 0) + count
 
         if all(value == 0 for value in vote.values()):
-            Path("dataset/unknown").mkdir(parents=True, exist_ok=True)
-            tile.save(f'dataset/unknown/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
+            Path(f'{outputFolder}/dataset/unknown').mkdir(parents=True, exist_ok=True)
+            tile.save(f'{outputFolder}/dataset/unknown/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
             continue
         
         topClass = max(vote, key=vote.get)
-        Path(f'dataset/{topClass}').mkdir(parents=True, exist_ok=True)
-        tile.save(f'dataset/{topClass}/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
+        Path(f'{outputFolder}/dataset/{topClass}').mkdir(parents=True, exist_ok=True)
+        tile.save(f'{outputFolder}/dataset/{topClass}/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
