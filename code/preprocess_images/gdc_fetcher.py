@@ -5,8 +5,10 @@ import PIL
 from PIL import Image
 from preprocess_image import PreprocessingSVS
 import sys
+from pathlib import Path
 
 batchNo = int(sys.argv[1]) if len(sys.argv) > 1 else -1
+outputFolder = sys.argv[2]
 baseUrl = 'https://api.gdc.cancer.gov'
 
 batchSize = 100
@@ -20,7 +22,9 @@ with open('gdc_manifest.2022-10-18.txt') as f:
         id, name = line.split('\t')[:2]
         nameParts = name.split('.')
         name = f'{nameParts[0]}.{nameParts[2]}'
-        path = f'slides/{name}'
+        folderPath = f'{outputFolder}/TCGA_processed'
+        path = f'{folderPath}/{name}'
+        Path(folderPath).mkdir(parents=True, exist_ok=True)
         urllib.request.urlretrieve(f'{baseUrl}/data/{id}', path)
         preprocess = PreprocessingSVS(path)
         preprocess.resize_to_target_mpp()
