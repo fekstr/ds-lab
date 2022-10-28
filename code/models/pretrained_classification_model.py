@@ -6,13 +6,17 @@ from torchvision.models._api import Weights
 
 
 class ImgClassificationModel(pl.LightningModule):
-    def __init__(self, model: nn.Module, model_weights: Weights = None) -> None:
+    def __init__(
+        self,
+        model: nn.Module,
+        model_weights: Weights = None,
+        hyperparams: dict = {"learning_rate": 3e-4, "momentum": 0.90},
+    ) -> None:
         super().__init__()
-        if model_weights is not None:
-            weights = model_weights.DEFAULT
-        else:
-            weights = None
+        self.save_hyperparameters()
+        weights = None if model_weights is None else model_weights.DEFAULT
         self.model = model(weights=weights)
+        self.hyperparams = hyperparams
 
     def training_step(self, batch: tuple, batch_idx: Union[int, list, None]) -> None:
         imgs, labels = batch
@@ -46,5 +50,9 @@ class ImgClassificationModel(pl.LightningModule):
         return preds
 
     def configure_optimizers(self):
-        optimizer = optim.SGD(self.parameters(), lr=3e-4, momentum=0.90)
+        optimizer = optim.SGD(
+            self.parameters(),
+            lr=self.hyperparams["learning_rate"],
+            momentum=self.hyperparams["momentum"],
+        )
         return optimizer
