@@ -1,5 +1,7 @@
 from tkinter import Y
 import math
+from pathlib import Path
+from tqdm import tqdm
 
 import PIL
 
@@ -67,12 +69,12 @@ class PreprocessingSVS:
         else:
             print("WRONG IMAGE DIMENSION... will skip this Image ", self.image_path)
 
-    def normalise(self) -> None:
+    def normalise(self, target_path="Ref.png") -> None:
         T = transforms.Compose(
             [transforms.ToTensor(), transforms.Lambda(lambda x: x * 255)]
         )
         torch_normaliser = torchstain.normalizers.MacenkoNormalizer(backend="torch")
-        target = PIL.Image.open("./Ref.png")
+        target = PIL.Image.open(target_path)
         torch_normaliser.fit(T(target))
         try:
             norm, _, _ = torch_normaliser.normalize(I=T(self.image), stains=True)
@@ -85,6 +87,7 @@ class PreprocessingSVS:
 
 
 if __name__ == "__main__":
+    import argparse
 
     ## big image preprocessing (Daniel)
     preprocess = PreprocessingSVS("TCGA-AA-3516.svs")
@@ -94,6 +97,23 @@ if __name__ == "__main__":
     preprocess.save()
 
     ## 224x224 image preprocessing (Frithiof)
-    preprocess = PreprocessingSVS("ADI-TCGA-AAICEQFN.tif")
-    preprocess.normalise()
-    preprocess.save()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--type")
+    args = parser.parse_args()
+
+    data_path = os.path.join("data", "NCT-CRC-HE-100K-NONORM")
+    target_path = os.path.join("data", "100K-PROCESSED")
+
+    c = args.type
+    class_path = os.path.join(data_path, c)
+    target_class_path = os.path.join(target_path, c)
+    for img in tqdm(os.listdir(class_path)):
+        img_path = os.path.join(class_path, img)
+        target_img_path = os.path.join(target_class_path, img)
+
+        if os.path.isfile(target_img_path):
+            continue
+        Path(target_class_path).mkdir(parents=True, exist_ok=True)
+        preprocess = PreprocessingSVS(img_path, target_path=target_img_path)
+        preprocess.normalise(target_path="code/preprocess_images/Ref.png")
+        preprocess.save()

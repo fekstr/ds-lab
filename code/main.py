@@ -11,6 +11,10 @@ pl.seed_everything(42)
 
 
 # VGG-19 or any different pre-trained image classification model from torchvision
-trained_vgg_19 = train_model(
-    ImgClassificationModel(vgg19, VGG19_Weights), train_batch_size=8
-)
+if __name__ == "__main__":
+    trained_vgg_19 = train_model(
+        ImgClassificationModel(vgg19, VGG19_Weights),
+        train_batch_size=64,
+        data_path="100K-PROCESSED",
+        saved_models_path="scratch/saved_models",
+    )
