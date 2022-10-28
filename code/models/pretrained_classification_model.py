@@ -6,9 +6,12 @@ from torchvision.models._api import Weights
 
 
 class ImgClassificationModel(pl.LightningModule):
-    def __init__(self, model: nn.Module, model_weights: Weights) -> None:
+    def __init__(self, model: nn.Module, model_weights: Weights = None) -> None:
         super().__init__()
-        weights = model_weights.DEFAULT
+        if model_weights is not None:
+            weights = model_weights.DEFAULT
+        else:
+            weights = None
         self.model = model(weights=weights)
 
     def training_step(self, batch: tuple, batch_idx: Union[int, list, None]) -> None:
@@ -43,5 +46,5 @@ class ImgClassificationModel(pl.LightningModule):
         return preds
 
     def configure_optimizers(self):
-        optimizer = optim.Adam(self.parameters(), lr=1e-3)
+        optimizer = optim.SGD(self.parameters(), lr=3e-4, momentum=0.90)
         return optimizer
