@@ -21,8 +21,9 @@ import sys
 
 type = sys.argv[1]
 i = int(sys.argv[2])
-outputFolder = sys.argv[3]
-datapath = '../../../WSS1-v1/'
+datapath = sys.argv[3]
+outputFolder = sys.argv[4]
+# datapath = '../../../WSS1-v1/'
 files = zip(['train', 'test'], range(1,6))
 tileSize = 224
 
