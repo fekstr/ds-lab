@@ -33,7 +33,8 @@ with open('gdc_manifest.2022-10-18.txt') as f:
             preprocess.normalise()
             preprocess.save()
             os.remove(path)
-        except:
+        except Exception as e:
+            print(f'Error in processing {name}. Error: {e}')
             with open(f'{outputFolder}/failed_tcga.txt', 'a') as fd:
                 fd.write(f'{id} \t {name} \n')
         # break # Add break so if you accidentally run this you won't dowload the entire dataset. Adjust this code as needed
