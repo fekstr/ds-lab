@@ -24,6 +24,7 @@ import numpy as np
 
 
 TARGET_MPP = 0.5
+SOURCE_MPP_DEFAULT = 0.50149999999999995
 TARGET_DIM = 1500
 
 
@@ -41,7 +42,10 @@ class PreprocessingSVS:
             slide = openslide.OpenSlide(image_path)
 
             # keep only best slide for mpp resampling
-            self.scale_factor = float(slide.properties["openslide.mpp-x"]) / TARGET_MPP
+            self.scale_factor = (
+                float(slide.properties.get("openslide.mpp-x", SOURCE_MPP_DEFAULT))
+                / TARGET_MPP
+            )
             self.image_dim = slide.dimensions
             level = slide.get_best_level_for_downsample(self.scale_factor)
             self.image = slide.read_region(
