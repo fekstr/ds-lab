@@ -20,7 +20,7 @@ class PatchDataset(Dataset):
         augmentation=True,
     ) -> None:
         self.path = pathlib.Path(dataset_path)
-        self.classes_folder = sorted(self.path.glob("*"))
+        self.class_paths = sorted(list(self.path.iterdir()))
         self.transform = transform
         self.classes_map = {}
         self.imgs_paths = []
@@ -32,9 +32,9 @@ class PatchDataset(Dataset):
         else:
             self.augmentation = None
 
-        for i, dir in enumerate(self.classes_folder):
-            self.classes_map[dir.name] = i
-            self.imgs_paths += [self.path.joinpath(x) for x in dir.glob("*")]
+        for i, class_path in enumerate(self.class_paths):
+            self.classes_map[class_path.name] = i
+            self.imgs_paths += list(class_path.iterdir())
 
     def __len__(self):
         return len(self.imgs_paths)
@@ -45,6 +45,7 @@ class PatchDataset(Dataset):
 
         image = Image.open(img_path)
         image = ToTensor()(image)
+        assert image.shape == torch.Size([3, 224, 224])
         if self.transform:
             image = self.transform(image)
 
