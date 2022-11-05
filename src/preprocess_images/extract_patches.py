@@ -26,7 +26,7 @@ outputFolder = sys.argv[4]
 # datapath = '../../../WSS1-v1/'
 files = zip(['train', 'test'], range(1,6))
 tileSize = 224
-
+minAmountOfVotes = 0.75*tileSize**2
 slideName = f'0{i}.svs'
 anno = f'0{i}_anno.json'
 f = open(f'{datapath}/{type}/{anno}')
@@ -36,12 +36,17 @@ width, height = slide.dimensions
 print('Slide name:', type, slideName)
 print('Slide height: ', height)
 print('Slide width: ', width)
+print('Slide level count: ', slide.properties)
 
 tiles=DeepZoomGenerator(slide, tile_size=tileSize, overlap=0, limit_bounds=False)
 print(tiles.tile_count)
 print(tiles.level_count)
-
-level = len(tiles.level_tiles)-1
+print(len(tiles.level_tiles))
+print(tiles.level_dimensions)
+maxZoomLevel = len(tiles.level_tiles)-1
+offset = int((int(slide.properties['openslide.objective-power']) / 20) / 2)
+level = maxZoomLevel - offset
+print('level: ', level)
 col, rows= tiles.level_tiles[level]
 arr = np.zeros((rows, col))
 print('level tiles: ', tiles.level_tiles[level])
@@ -53,7 +58,7 @@ for poly in annos:
 
 for c in range(col):
     for r in range(rows):
-        print('(c,r)=', c, r)
+        # print('(c,r)=', c, r)
         vote = {}
         tile=tiles.get_tile(level,(c, r))
         coords = list(tiles.get_tile_coordinates(level,(c, r)))[0]
@@ -69,5 +74,6 @@ for c in range(col):
             continue
         
         topClass = max(vote, key=vote.get)
-        Path(f'{outputFolder}/dataset/{topClass}').mkdir(parents=True, exist_ok=True)
-        tile.save(f'{outputFolder}/dataset/{topClass}/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
+        if vote[topClass] > minAmountOfVotes: 
+            Path(f'{outputFolder}/dataset/{topClass}').mkdir(parents=True, exist_ok=True)
+            tile.save(f'{outputFolder}/dataset/{topClass}/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
