@@ -1,18 +1,23 @@
-from PIL import Image, ImageOps
+import os
+from PIL import Image
 import numpy as np
+import pandas as pd
 from collections import defaultdict
 import torch
-from torchvision.models import resnet50, ResNet50_Weights
+import pytorch_lightning as pl
+from torchvision.models import vgg19, resnet50, ResNet50_Weights
 
-BATCH_SIZE = 8
+from src.models.pretrained_classification_model import ImgClassificationModel
+
+BATCH_SIZE = 64
 CLASSIFIER_WIDTH = 224
 CLASSIFIER_HEIGHT = 224
-NUM_CLASSES = 1000
+NUM_CLASSES = 9
 
 
 class Segmentation:
     def __init__(
-        self, fun=None, padding="keep_last_window", stride=CLASSIFIER_WIDTH
+        self, fun_checkpoint=None, padding="keep_last_window", stride=CLASSIFIER_WIDTH
     ) -> None:
         """Initialise segmentation
 
@@ -21,30 +26,56 @@ class Segmentation:
             padding (str, optional): By default adds padding so that segmentation map is the same size as image for stride = CLASSIFIER_WIDTH. Defaults to "keep_last_window".
             stride (_type_, optional): By default non-overlapping, should be at most CLASSIFIER_WIDTH. Defaults to CLASSIFIER_WIDTH.
         """
-        if fun:
-            self.__fun = fun
-        else:
-            self.__fun = self.__placeholder
+
+        self.__fun = self.__pytorch_model
+        self.model = ImgClassificationModel.load_from_checkpoint(fun_checkpoint)
+        self.model.freeze()
+
         self.padding = padding
         self.stride = stride
 
-    def get_segmentation_matrices(self, images) -> dict():
-        """Calls all function in order
+    def create_TCGA_spreadsheet(
+        self, folder_location: str, buffer_frequency=1, checkpoint_frequency=1
+    ):
+        results = dict()
+        image_buffer = []
 
-        Args:
-            images (_type_): np.array of full sized images
+        for ind, filename in enumerate(os.listdir(folder_location)):
+            if filename.split(".")[-1] == "tif":
+                print("image ", ind)
 
-        Returns:
-            np.array: dictonary of segmentation maps (np.arrays), key corresponds to image ID
-        """
-        self.images = images
+                image_buffer.append(filename)
 
+                if len(image_buffer) == buffer_frequency:
+                    self.images = [
+                        Image.open(folder_location + "/" + fn) for fn in image_buffer
+                    ]
+                    self.__probabilities_only_sequence()
+                    for key, value in self.probabilities.items():
+                        results[image_buffer[key]] = value
+                    image_buffer = []
+
+                if ind % checkpoint_frequency == 0:
+                    pd.DataFrame(results).T.to_csv(
+                        "TCGA_probabilities_per_image.csv", float_format="%.18f"
+                    )
+
+        if len(image_buffer) != 0:
+            self.images = [
+                Image.open(folder_location + "/" + fn) for fn in image_buffer
+            ]
+            self.__probabilities_only_sequence()
+            for key, value in self.probabilities.items():
+                results[image_buffer[key]] = value
+
+        pd.DataFrame(results).T.to_csv(
+            "TCGA_probabilities_per_image.csv", float_format="%.18f"
+        )
+
+    def __probabilities_only_sequence(self):
         self.__preprocess()
         self.__segment()
-        self.__assemble_segments()
         self.__get_probabilities()
-
-        return self.segmentation_matrices
 
     def __preprocess(self) -> None:
         """SET Channel first and add padding for each image"""
@@ -166,20 +197,17 @@ class Segmentation:
 
         probabilities = dict()
         for key, value in self.segmented_values.items():
-            _, probabilities[key] = np.array(
-                np.unique(value, return_counts=True)
-            ) / len(value)
+            probabilities[key] = np.mean(value, axis=0)
         self.probabilities = probabilities
 
-    ## to be replaced with our pytorch classifier
-    def __placeholder(self, images) -> list():
-        weights = ResNet50_Weights.DEFAULT
-        model = resnet50(weights=weights)
-        return model(images).squeeze(0).softmax(0)
+    def __pytorch_model(self, images) -> list():
+        with torch.no_grad():
+            pred = self.model.model(images).softmax(1)
+        return pred
 
 
 if __name__ == "__main__":
-    im1 = Image.open("preprocess_full_images/TCGA-AA-3516.png")
-    im2 = ImageOps.flip(Image.open("preprocess_full_images/TCGA-AA-3516.png"))
-    segment = Segmentation()
-    print(segment.get_segmentation_matrices(np.array([im1, im2])))
+    segment = Segmentation(
+        fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt"
+    )
+    segment.create_TCGA_spreadsheet(folder_location="./TCGA_processed")
