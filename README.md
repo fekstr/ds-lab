@@ -36,3 +36,7 @@ ds-lab
 ## Trained models
 
 [EfficientNet B0](https://polybox.ethz.ch/index.php/s/asyU2O8VKnxi6gd/download)
+
+## Segmentation Results
+
+[TCGA: probabilities per image - unfiltered](https://polybox.ethz.ch/index.php/s/x82kNmkx27WjRQR)
