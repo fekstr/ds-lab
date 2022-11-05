@@ -32,3 +32,7 @@ ds-lab
 [PATH-DT-MSU slides](https://imaging.cs.msu.ru/en/research/histology/path-dt-msu)
 
 [Processed slides](https://polybox.ethz.ch/index.php/s/Q4joLEkT8HepwWl)
+
+## Trained models
+
+[EfficientNet B0](https://polybox.ethz.ch/index.php/s/asyU2O8VKnxi6gd/download)
