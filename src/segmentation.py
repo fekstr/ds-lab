@@ -1,11 +1,11 @@
 import os
+import math
 from PIL import Image
 import numpy as np
 import pandas as pd
 from collections import defaultdict
 import torch
-import pytorch_lightning as pl
-from torchvision.models import vgg19, resnet50, ResNet50_Weights
+from torchvision.transforms import Normalize, ToTensor
 
 from src.models.pretrained_classification_model import ImgClassificationModel
 
@@ -35,7 +35,7 @@ class Segmentation:
         self.stride = stride
 
     def create_TCGA_spreadsheet(
-        self, folder_location: str, buffer_frequency=1, checkpoint_frequency=1
+        self, folder_location: str, buffer_frequency=20, checkpoint_frequency=100
     ):
         results = dict()
         image_buffer = []
@@ -79,28 +79,35 @@ class Segmentation:
 
     def __preprocess(self) -> None:
         """SET Channel first and add padding for each image"""
-
         for ind, image in enumerate(self.images):
-            self.images[ind] = np.moveaxis(np.array(image), -1, 0)
+            self.images[ind] = np.array(image)
 
         self.padding_width = list()
         self.padding_hight = list()
 
         for ind, image in enumerate(self.images):
             if self.padding == "keep_last_window":
-                self.padding_width.append(image.shape[1] % CLASSIFIER_WIDTH)
-                self.padding_hight.append(image.shape[2] % CLASSIFIER_WIDTH)
+                self.padding_width.append(
+                    math.ceil(
+                        (CLASSIFIER_WIDTH - image.shape[0] % CLASSIFIER_WIDTH) / 2
+                    )
+                )
+                self.padding_hight.append(
+                    math.ceil(
+                        (CLASSIFIER_WIDTH - image.shape[1] % CLASSIFIER_WIDTH) / 2
+                    )
+                )
             else:
                 self.padding_width.append(self.padding)
                 self.padding_hight.append(self.padding)
 
         for ind, image in enumerate(self.images):
-            np.pad(
+            self.images[ind] = np.pad(
                 np.array(image),
                 [
+                    (self.padding_width[ind], self.padding_width[ind]),
+                    (self.padding_width[ind], self.padding_hight[ind]),
                     (0, 0),
-                    (0, self.padding_width[ind]),
-                    (0, self.padding_hight[ind]),
                 ],
                 mode="constant",
             )
@@ -108,7 +115,9 @@ class Segmentation:
     def __segment(self) -> None:
         """Segments images into segments and pass them to classifier, grouped into batches of BATCH_SIZE"""
 
-        image_buffer = torch.empty((BATCH_SIZE, 3, CLASSIFIER_WIDTH, CLASSIFIER_HEIGHT))
+        image_buffer = np.zeros(
+            (BATCH_SIZE, CLASSIFIER_WIDTH, CLASSIFIER_HEIGHT, 3), dtype=np.uint8
+        )
         buffer_indices = list()
         self.segmented_values = defaultdict(list)
         self.width_n_steps = [0] * len(self.images)
@@ -117,14 +126,9 @@ class Segmentation:
         batch_num = 0
 
         for i, image in enumerate(self.images):
-            (_, width, height) = self.images[i].shape
-            self.width_n_steps[i] = int(
-                (width - CLASSIFIER_WIDTH + self.padding_width[i]) / self.stride
-            )
-            self.height_n_steps[i] = int(
-                (height - CLASSIFIER_HEIGHT + self.padding_hight[i]) / self.stride
-            )
-
+            (width, height, _) = self.images[i].shape
+            self.width_n_steps[i] = int((width + self.padding_width[i]) / self.stride)
+            self.height_n_steps[i] = int((height + self.padding_hight[i]) / self.stride)
             approx_num_of_batches = (
                 len(self.images)
                 * (self.width_n_steps[i] * self.height_n_steps[i])
@@ -135,13 +139,11 @@ class Segmentation:
                 for k in range(self.height_n_steps[i]):
                     buffer_indices.append(i)
 
-                    image_buffer[len(buffer_indices) - 1] = torch.tensor(
-                        image[
-                            :,
-                            j * self.stride : j * self.stride + CLASSIFIER_WIDTH,
-                            k * self.stride : k * self.stride + CLASSIFIER_HEIGHT,
-                        ]
-                    )
+                    image_buffer[len(buffer_indices) - 1] = image[
+                        j * self.stride : j * self.stride + CLASSIFIER_WIDTH,
+                        k * self.stride : k * self.stride + CLASSIFIER_HEIGHT,
+                        :,
+                    ]
 
                     if len(buffer_indices) == BATCH_SIZE:
                         print(
@@ -158,8 +160,9 @@ class Segmentation:
                             self.segmented_values[buffer_indices[ind]].append(
                                 classes[ind].detach().numpy()
                             )
-                        image_buffer = torch.empty(
-                            (BATCH_SIZE, 3, CLASSIFIER_WIDTH, CLASSIFIER_HEIGHT)
+                        image_buffer = np.zeros(
+                            (BATCH_SIZE, CLASSIFIER_WIDTH, CLASSIFIER_HEIGHT, 3),
+                            dtype=np.uint8,
                         )
                         buffer_indices = list()
 
@@ -182,7 +185,7 @@ class Segmentation:
             print("Generating segmentation map for image", key)
 
             probabilities = np.zeros(
-                (self.images[key].shape[1], self.images[key].shape[2], NUM_CLASSES)
+                (self.images[key].shape[0], self.images[key].shape[1], NUM_CLASSES)
             )
             for j in range(self.width_n_steps[key] + 1):
                 for k in range(self.height_n_steps[key] + 1):
@@ -200,14 +203,25 @@ class Segmentation:
             probabilities[key] = np.mean(value, axis=0)
         self.probabilities = probabilities
 
-    def __pytorch_model(self, images) -> list():
+    def __pytorch_model(self, images: np.array) -> list():
+        normaliser = Normalize(
+            (0.485, 0.456, 0.406), (0.229, 0.224, 0.225), inplace=True
+        )
+
+        test_dataset = torch.zeros(
+            images.shape[0], images.shape[3], images.shape[1], images.shape[2]
+        )
+        for ind, image in enumerate(images):
+            test_dataset[ind] = ToTensor()(image.astype(np.uint8))
+        normaliser(test_dataset)
+
         with torch.no_grad():
-            pred = self.model.model(images).softmax(1)
+            pred = self.model.model(test_dataset).softmax(1)
         return pred
 
 
 if __name__ == "__main__":
     segment = Segmentation(
-        fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt"
+        fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt",
     )
     segment.create_TCGA_spreadsheet(folder_location="./TCGA_processed")
