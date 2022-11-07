@@ -22,6 +22,10 @@ from torchvision import transforms
 import torchstain
 import numpy as np
 
+
+CHANGE_MPP = False
+TARGET_MPP = 0.5
+SOURCE_MPP_DEFAULT = 0.50149999999999995
 TARGET_DIM = 1500
 
 
@@ -38,17 +42,35 @@ class PreprocessingSVS:
             self.if_svs = True
             slide = openslide.OpenSlide(image_path)
 
-            # keep only level 0
-            self.image_dim = slide.dimensions
-            self.image = slide.read_region(
-                (0, 0), 0, slide.level_dimensions[0]
-            ).convert("RGB")
-            del slide
+            # keep only best slide for mpp resampling
+            if CHANGE_MPP:
+                self.scale_factor = (
+                    float(slide.properties.get("openslide.mpp-x", SOURCE_MPP_DEFAULT))
+                    / TARGET_MPP
+                )
+                self.image_dim = slide.dimensions
+                level = slide.get_best_level_for_downsample(self.scale_factor)
+                self.image = slide.read_region(
+                    (0, 0), level, slide.level_dimensions[level]
+                ).convert("RGB")
+                del slide
+            else:
+                self.image = slide.read_region(
+                    (0, 0), 0, slide.level_dimensions[0]
+                ).convert("RGB")
+                del slide
+
 
         else:
             self.if_svs = False
             self.image = PIL.Image.open(image_path)
             self.image_dim = self.image.size
+
+    def resize_to_target_mpp(self) -> None:
+        if CHANGE_MPP:
+            new_x = math.floor(self.image_dim[0] * self.scale_factor)
+            new_y = math.floor(self.image_dim[1] * self.scale_factor)
+            self.image = self.image.resize((new_x, new_y), PIL.Image.BICUBIC)
 
     def crop(self) -> None:
         if self.image.size[0] > TARGET_DIM and self.image.size[1] > TARGET_DIM:
@@ -82,6 +104,7 @@ if __name__ == "__main__":
 
     ## big image preprocessing (Daniel)
     preprocess = PreprocessingSVS("TCGA-AA-3516.svs")
+    preprocess.resize_to_target_mpp()
     preprocess.crop()
     preprocess.normalise()
     preprocess.save()
