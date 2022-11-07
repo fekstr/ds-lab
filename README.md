@@ -24,6 +24,9 @@ ds-lab
 
 
 ```
+## Relevant papers
+[Tissue Type Recognition in Whole Slide Histological Images](http://ceur-ws.org/Vol-3027/paper50.pdf)
+[Predicting survival from colorectal cancer histology slides using deep learning: A retrospective multicenter study](https://journals.plos.org/plosmedicine/article/file?id=10.1371/journal.pmed.1002730&type=printable)
 
 ## Data sets
 
