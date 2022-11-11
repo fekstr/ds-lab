@@ -63,17 +63,17 @@ for c in range(col):
         tile=tiles.get_tile(level,(c, r))
         coords = list(tiles.get_tile_coordinates(level,(c, r)))[0]
 
-        points = list(itertools.product(range(coords[1], coords[1]+tileSize), range(coords[0], coords[0]+tileSize)))
+        points = list(itertools.product(range(coords[0], coords[0]+tileSize), range(coords[1], coords[1]+tileSize)))
         for poly in annos:
             count = sum(poly['poly'].contains_points(points))
             vote[poly['class']] = vote.get(poly['class'], 0) + count
 
         if all(value == 0 for value in vote.values()):
             Path(f'{outputFolder}/dataset/unknown').mkdir(parents=True, exist_ok=True)
-            tile.save(f'{outputFolder}/dataset/unknown/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
+            tile.save(f'{outputFolder}/dataset/unknown/{type}_0{i}_row_{r}_col_{c}_x_{coords[0]}_y_{coords[1]}.tif')
             continue
         
         topClass = max(vote, key=vote.get)
         if vote[topClass] > minAmountOfVotes: 
             Path(f'{outputFolder}/dataset/{topClass}').mkdir(parents=True, exist_ok=True)
-            tile.save(f'{outputFolder}/dataset/{topClass}/{type}_0{i}_row_{r}_col_{c}_x_{coords[1]}_y_{coords[0]}.tif')
+            tile.save(f'{outputFolder}/dataset/{topClass}/{type}_0{i}_row_{r}_col_{c}_x_{coords[0]}_y_{coords[1]}.tif')
