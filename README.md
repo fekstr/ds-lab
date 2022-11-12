@@ -43,4 +43,11 @@ ds-lab
 
 ## Segmentation Results
 
+### CSV files for DEEP STROMA score - eqivalent of their excel files
+
+[TCGA patients with probabilities averaged](https://polybox.ethz.ch/index.php/s/F800Obkts8TEE6Y)
+[TCGA patients with probabilities - most probable tumor image](https://polybox.ethz.ch/index.php/s/8SlUq2AFCZC0bSn)
+
+### Input for postprocess
+
 [TCGA: probabilities per image - unfiltered](https://polybox.ethz.ch/index.php/s/f7Ofp4ZcShN1lmk)
