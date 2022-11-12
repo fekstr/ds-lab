@@ -1,0 +1,501 @@
+ID,msi_status,years_to_birth,vital_status,tumor_tissue_site,pathologic_stage,pathology_T_stage,pathology_N_stage,pathology_M_stage,gender,histological_type,hypermutated,methylation_subtype,CAF_SCORE,percent_stromal_cells,RF_predictedCMS,cleanstage,days_to_event
+TCGA-CM-6675,MSS,35.0,0,colon,stage ivb,t3,n2b,m1b,male,colon adenocarcinoma,0.0,CIMP-H,2.080627907,12,CMS1,4.0,397
+TCGA-AY-A8YK,,44.0,0,colon,stage iva,t3,n2a,m1,male,colon adenocarcinoma,,,1.635183721,7,,4.0,573
+TCGA-CM-4747,MSI-L,47.0,0,colon,stage iva,t4a,n1b,m1a,male,colon adenocarcinoma,0.0,CIMP-L,2.024607752,15,,4.0,761
+TCGA-DY-A1DG,MSS,75.0,1,rectum,stage iva,t3,n1,m1,male,rectal adenocarcinoma,,Cluster3,0.990049612,0,,4.0,1566
+TCGA-CM-5862,MSS,80.0,1,colon,stage iva,t3,n1a,m1a,male,colon adenocarcinoma,0.0,Cluster3,1.944954264,0,CMS2,4.0,153
+TCGA-AM-5820,MSS,59.0,0,colon,stage iva,t4a,n2,m1,female,colon adenocarcinoma,1.0,Cluster4,2.268763566,25,,4.0,14
+TCGA-AA-3941,MSI-L,84.0,0,colon,stage iva,t4,n1b,m1a,female,colon adenocarcinoma,0.0,CIMP-H,1.53474031,15,,4.0,730
+TCGA-A6-5662,MSS,46.0,0,colon,stage iva,t3,n2,m1,male,colon adenocarcinoma,0.0,Cluster4,2.152093798,0,CMS2,4.0,718
+TCGA-DC-6154,MSI-H,57.0,0,rectum,stage iva,t4a,n2b,m1,female,rectal adenocarcinoma,,Cluster3,1.820131008,10,CMS2,4.0,365
+TCGA-CM-6678,MSS,63.0,0,colon,stage iva,t4a,n1c,m1a,female,colon adenocarcinoma,0.0,Cluster4,1.974225581,12,CMS2,4.0,335
+TCGA-CM-5868,MSS,59.0,0,colon,stage iva,t4a,n1a,m1a,female,colon adenocarcinoma,0.0,Cluster4,2.514737984,8,CMS4,4.0,518
+TCGA-A6-6142,MSS,56.0,0,colon,stage iva,t3,n1a,m1a,female,colon adenocarcinoma,0.0,Cluster4,3.268337984,50,CMS4,4.0,763
+TCGA-DC-6156,MSS,62.0,0,rectum,stage iva,t4a,n2b,m1a,male,rectal adenocarcinoma,,Cluster4,3.582028682,35,CMS4,4.0,943
+TCGA-F5-6702,MSS,71.0,1,rectum,stage iva,t3,n1,m1,male,rectal adenocarcinoma,0.0,Cluster4,4.320267442,20,CMS4,4.0,869
+TCGA-AZ-4684,MSI-L,49.0,0,colon,stage iva,t3,n2,m1,male,colon adenocarcinoma,,Cluster4,2.550658915,15,,4.0,1977
+TCGA-AY-5543,MSS,65.0,0,colon,stage iva,t3,n1a,m1,female,colon adenocarcinoma,0.0,Cluster4,1.277782171,10,,4.0,1004
+TCGA-AZ-4614,MSI-L,71.0,1,colon,stage iva,t4a,n1,m1,female,colon adenocarcinoma,,CIMP-H,1.146046512,5,,4.0,172
+TCGA-A6-6648,MSS,56.0,0,colon,stage iva,t3,n0,m1a,male,colon adenocarcinoma,0.0,Cluster4,1.782825581,5,CMS2,4.0,766
+TCGA-F4-6809,MSS,52.0,1,colon,stage iva,t3,n1,m1,female,colon adenocarcinoma,0.0,Cluster4,3.132722481,15,CMS4,4.0,403
+TCGA-DC-6681,MSS,70.0,0,rectum,stage iva,t3,n2a,m1a,female,rectal adenocarcinoma,,Cluster4,3.061896899,30,,4.0,790
+TCGA-AZ-4682,MSS,61.0,1,colon,stage iva,t3,n0,m1,male,colon adenocarcinoma,,Cluster3,1.63597907,15,,4.0,680
+TCGA-AA-3692,MSI-L,47.0,1,colon,stage iv,t3,n2,m1,female,colon mucinous adenocarcinoma,0.0,Cluster3,2.161048062,15,,4.0,1095
+TCGA-AG-4005,MSS,64.0,0,rectum,stage iv,t3,n2,m1,male,rectal adenocarcinoma,0.0,Cluster3,2.365789147,15,,4.0,427
+TCGA-AA-≈,MSS,70.0,1,colon,stage iv,t3,n0,m1,female,colon adenocarcinoma,0.0,Cluster3,1.036290698,10,CMS2,4.0,153
+TCGA-AZ-6600,MSS,64.0,1,colon,stage iv,t4,n1,m1,male,colon adenocarcinoma,0.0,CIMP-L,2.781129457,20,CMS4,4.0,368
+TCGA-AG-4021,MSS,84.0,1,rectum,stage iv,t3,n2,m1,female,rectal adenocarcinoma,0.0,Cluster3,2.799482946,25,CMS4,4.0,121
+TCGA-AA-3684,MSS,65.0,0,colon,stage iv,t4,n2,m1,female,colon mucinous adenocarcinoma,0.0,CIMP-L,2.96926124,25,CMS4,4.0,0
+TCGA-AA-3696,MSS,75.0,1,colon,stage iv,t3,n1,m1,female,colon adenocarcinoma,0.0,Cluster3,2.301254264,15,CMS2,4.0,153
+TCGA-AG-3582,MSS,75.0,1,rectum,stage iv,t3,n1,m1,male,rectal adenocarcinoma,0.0,Cluster3,2.232056589,10,CMS2,4.0,1096
+TCGA-AF-6672,MSS,43.0,0,rectum,stage iv,t4a,n2b,mx,male,rectal adenocarcinoma,0.0,Cluster3,1.820017829,15,CMS3,4.0,748
+TCGA-AG-A02G,MSS,66.0,1,rectum,stage iv,t2,n1,m1,male,rectal adenocarcinoma,0.0,Cluster3,1.147949612,18,CMS2,4.0,1185
+TCGA-AA-3867,MSS,74.0,0,colon,stage iv,t3,n2,m1,male,colon adenocarcinoma,0.0,Cluster3,2.966504651,10,CMS4,4.0,731
+TCGA-A6-2671,MSS,85.0,1,colon,stage iv,t3,n2,m1,male,colon adenocarcinoma,0.0,Cluster4,2.655482946,15,CMS4,4.0,1331
+TCGA-AG-3605,MSS,85.0,0,rectum,stage iv,t3,n1,m1,female,rectal adenocarcinoma,0.0,CIMP-L,1.178796124,3,CMS2,4.0,30
+TCGA-AA-3693,MSS,77.0,0,colon,stage iv,t4,n1,m1,female,colon adenocarcinoma,0.0,Cluster3,1.744763566,50,CMS2,4.0,0
+TCGA-AA-A02E,MSI-L,82.0,1,colon,stage iv,t3,n1,m1,female,colon adenocarcinoma,,Cluster3,1.533131008,17,,4.0,90
+TCGA-CI-6619,MSS,41.0,0,rectum,stage iv,t3,n1c,m1,male,rectal adenocarcinoma,0.0,Cluster4,2.176587597,5,,4.0,184
+TCGA-DM-A285,MSS,71.0,1,colon,stage iv,t3,n2,m1,female,colon mucinous adenocarcinoma,0.0,CIMP-L,2.499717829,30,,4.0,179
+TCGA-AA-3972,MSI-L,72.0,0,colon,stage iv,t3,n1,m1,male,colon adenocarcinoma,0.0,CIMP-L,2.056627132,30,CMS2,4.0,1551
+TCGA-A6-2682,MSS,70.0,1,colon,stage iv,t4b,n1,m1,male,colon adenocarcinoma,,Cluster4,2.854618605,35,CMS4,4.0,424
+TCGA-EI-7002,MSI-L,58.0,0,rectum,stage iv,t3,n2,m1,male,rectal adenocarcinoma,0.0,Cluster4,2.677202326,15,CMS2,4.0,364
+TCGA-AA-3870,MSS,71.0,0,colon,stage iv,t3,n2,m1,female,colon adenocarcinoma,0.0,CIMP-H,2.667394574,5,CMS4,4.0,912
+TCGA-AA-3688,MSI-L,80.0,0,colon,stage iv,t3,n1,m1,male,colon adenocarcinoma,0.0,Cluster3,2.001565891,10,CMS2,4.0,578
+TCGA-AF-3913,MSS,60.0,1,rectum,stage iv,t3,n1,m1,male,rectal adenocarcinoma,0.0,Cluster3,2.575134109,20,CMS4,4.0,316
+TCGA-AA-3488,MSS,58.0,1,colon,stage iv,t3,n2,m1,male,colon adenocarcinoma,,Cluster3,1.187537209,5,CMS2,4.0,153
+TCGA-AA-3679,MSS,59.0,0,colon,stage iv,t3,n2,m1,male,colon adenocarcinoma,0.0,Cluster3,1.941831783,25,CMS2,4.0,457
+TCGA-D5-6929,MSI-L,49.0,0,colon,stage iv,t3,n1,m1,female,colon adenocarcinoma,,CIMP-L,2.584565116,10,CMS4,4.0,408
+TCGA-AA-3662,MSS,80.0,0,colon,stage iv,t4,n2,m1,female,colon adenocarcinoma,0.0,Cluster4,2.23694186,10,,4.0,184
+TCGA-AA-A02F,MSS,68.0,0,colon,stage iv,t3,n1,m1,female,colon adenocarcinoma,0.0,Cluster3,1.984315504,10,CMS2,4.0,1216
+TCGA-5M-AAT6,,40.0,1,colon,stage iv,t4a,n2b,m1a,female,colon adenocarcinoma,,,2.848773643,15,,4.0,290
+TCGA-AA-3494,MSS,55.0,0,colon,stage iv,t3,n0,m1,male,colon adenocarcinoma,,Cluster4,1.760697674,5,CMS2,4.0,31
+TCGA-AG-A016,MSS,55.0,0,rectum,stage iv,t3,n2,m1,male,rectal adenocarcinoma,0.0,Cluster3,1.297051163,10,CMS2,4.0,276
+TCGA-AZ-4616,MSI-L,82.0,1,colon,stage iv,t3,n2,m1,female,colon adenocarcinoma,,CIMP-L,1.927002326,10,CMS1,4.0,156
+TCGA-EI-6885,MSS,57.0,0,rectum,stage iv,t3,n1b,m1,female,rectal adenocarcinoma,0.0,Cluster4,3.071168992,30,CMS4,4.0,415
+TCGA-AA-3680,MSI-L,67.0,1,colon,stage iv,t4,n2,m1,female,colon adenocarcinoma,0.0,CIMP-L,1.971951938,5,CMS3,4.0,335
+TCGA-AA-A02H,MSS,74.0,1,colon,stage iv,t3,n2,m1,female,colon adenocarcinoma,0.0,Cluster3,2.035964341,15,CMS2,4.0,61
+TCGA-AA-3869,MSS,76.0,1,colon,stage iv,t4,n2,m1,male,colon adenocarcinoma,0.0,Cluster3,2.04730155,10,,4.0,822
+TCGA-AZ-6607,MSS,69.0,1,colon,stage iv,t4,n2,m1,male,colon adenocarcinoma,0.0,CIMP-L,4.117918605,20,CMS4,4.0,97
+TCGA-AZ-4323,MSI-L,37.0,1,colon,stage iv,t4,n2,m1,male,colon adenocarcinoma,0.0,Cluster4,3.459293798,10,,4.0,43
+TCGA-AZ-6606,MSS,81.0,1,colon,stage iv,t4,n2,m1,male,colon adenocarcinoma,,CIMP-H,1.220826357,10,CMS3,4.0,357
+TCGA-AG-4007,MSI-L,86.0,0,rectum,stage iv,t4,n2,m1,male,rectal adenocarcinoma,0.0,CIMP-L,2.37914031,10,CMS2,4.0,31
+TCGA-AG-A023,MSS,62.0,1,rectum,stage iv,t4,n2,m1,female,rectal adenocarcinoma,,Cluster3,2.503168992,8,CMS4,4.0,1581
+TCGA-AG-3583,MSI-L,66.0,1,rectum,stage iv,t3,n2,m1,male,rectal mucinous adenocarcinoma,0.0,Cluster3,1.305857364,10,CMS2,4.0,610
+TCGA-AA-3930,MSI-L,66.0,1,colon,stage iv,t3,n2,m1,male,colon adenocarcinoma,0.0,CIMP-L,1.983042636,5,CMS1,4.0,61
+TCGA-5M-AAT4,,74.0,1,colon,stage iv,t3,n0,m1b,male,colon adenocarcinoma,,,1.535765116,20,,4.0,49
+TCGA-A6-2683,MSI-L,57.0,1,colon,stage iv,t4,n0,m1,female,colon adenocarcinoma,0.0,CIMP-L,0.999414729,10,,4.0,504
+TCGA-AG-3731,MSI-L,65.0,0,rectum,stage iv,t3,n1,m1,male,rectal adenocarcinoma,,CIMP-L,3.586779845,15,,4.0,1126
+TCGA-AA-A02K,MSS,50.0,1,colon,stage iv,t4,n2,m1,male,colon adenocarcinoma,,CIMP-L,1.218256589,13,CMS2,4.0,426
+TCGA-AA-3989,MSS,84.0,1,colon,stage iv,t3,n2,m1,male,colon adenocarcinoma,0.0,CIMP-L,2.232126357,8,CMS2,4.0,242
+TCGA-A6-2674,MSS,71.0,0,colon,stage iv,t3,n2,m1,male,colon mucinous adenocarcinoma,0.0,Cluster3,3.225958915,15,CMS4,4.0,1331
+TCGA-AG-3584,MSS,60.0,1,rectum,stage iv,t3,n2,m1,male,rectal adenocarcinoma,0.0,CIMP-L,2.394033333,5,,4.0,730
+TCGA-CK-6748,MSS,45.0,0,colon,stage iv,t3,n1,m1,female,colon mucinous adenocarcinoma,,Cluster4,3.122489922,25,CMS4,4.0,61
+TCGA-DM-A28A,MSS,78.0,1,colon,stage iiic,t3,n2,m0,male,colon adenocarcinoma,,CIMP-L,2.327054264,13,,3.0,805
+TCGA-A6-3807,MSS,53.0,0,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,2.520235659,20,CMS4,3.0,1054
+TCGA-AA-A01K,MSS,74.0,0,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,2.80459845,15,CMS4,3.0,943
+TCGA-A6-5664,MSS,80.0,0,colon,stage iiic,t4a,n2a,mx,male,colon adenocarcinoma,0.0,Cluster4,3.342092248,0,CMS4,3.0,672
+TCGA-D5-6931,MSS,77.0,0,colon,stage iiic,t4b,n2,m0,male,colon adenocarcinoma,,CIMP-L,2.654662016,37,,3.0,365
+TCGA-F4-6704,MSS,60.0,0,colon,stage iiic,t3,n2b,mx,male,colon mucinous adenocarcinoma,0.0,Cluster4,3.782141085,20,CMS4,3.0,47
+TCGA-AA-3844,MSS,78.0,0,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,1.61105814,12,CMS2,3.0,454
+TCGA-AY-4070,MSS,50.0,1,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,2.298768217,10,,3.0,496
+TCGA-AF-A56L,,48.0,0,rectum,stage iiic,t3,n2,m0,female,rectal adenocarcinoma,,,2.324862791,0,,3.0,2007
+TCGA-AA-3552,MSS,85.0,1,colon,stage iiic,t3,n2,m0,male,colon adenocarcinoma,0.0,Cluster3,2.03767907,5,CMS2,3.0,396
+TCGA-AG-3600,MSS,62.0,0,rectum,stage iiic,t3,n2,m0,male,rectal adenocarcinoma,0.0,CIMP-H,1.732975969,5,CMS1,3.0,184
+TCGA-AA-A01D,MSS,47.0,1,colon,stage iiic,t3,n2,m0,female,colon mucinous adenocarcinoma,0.0,CIMP-L,2.991349612,20,CMS4,3.0,334
+TCGA-AA-A00O,MSI-L,83.0,0,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,2.808127907,19,CMS4,3.0,822
+TCGA-AA-3542,MSS,69.0,0,colon,stage iiic,t3,n2,m0,male,colon adenocarcinoma,0.0,Cluster3,1.130402326,13,CMS2,3.0,395
+TCGA-CK-4952,MSS,48.0,0,colon,stage iiic,t4,n2,m0,female,colon mucinous adenocarcinoma,0.0,CIMP-H,1.421257364,15,CMS3,3.0,475
+TCGA-DM-A0XF,MSI-L,68.0,1,colon,stage iiic,t3,n2,m0,female,,0.0,Cluster4,2.153577519,35,CMS2,3.0,1162
+TCGA-AG-3602,MSS,66.0,0,rectum,stage iiic,t3,n2,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.885544186,5,,3.0,0
+TCGA-AF-3911,MSI-L,48.0,0,rectum,stage iiic,t3,n2,mx,male,rectal adenocarcinoma,0.0,Cluster3,2.606481395,10,CMS2,3.0,1148
+TCGA-DM-A28H,MSI-L,50.0,0,colon,stage iiic,t3,n2,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.32824031,25,CMS2,3.0,3561
+TCGA-AD-6965,MSS,62.0,0,colon,stage iiic,t4a,n2b,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.123318605,22,CMS2,3.0,805
+TCGA-AA-A00F,MSS,66.0,0,colon,stage iiic,t3,n2,m0,male,colon adenocarcinoma,0.0,Cluster3,2.594647287,15,CMS4,3.0,1035
+TCGA-F4-6807,MSS,51.0,0,colon,stage iiic,t3,n2b,m0,female,colon adenocarcinoma,0.0,Cluster4,3.756874419,30,CMS4,3.0,1309
+TCGA-DY-A1DF,MSI-L,73.0,1,rectum,stage iiic,t3,n2,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.627368217,0,,3.0,734
+TCGA-AA-3952,MSS,68.0,1,colon,stage iiic,t3,n2,m0,male,colon adenocarcinoma,0.0,Cluster3,2.33956124,34,CMS4,3.0,61
+TCGA-F4-6461,MSS,41.0,1,colon,stage iiic,t4b,n2,m0,female,colon adenocarcinoma,0.0,CIMP-H,2.749103876,20,,3.0,338
+TCGA-AD-6899,MSS,84.0,1,colon,stage iiic,t4a,n2b,mx,male,colon mucinous adenocarcinoma,0.0,Cluster4,3.259249612,25,CMS4,3.0,176
+TCGA-CL-5917,MSS,71.0,0,rectum,stage iiic,t3,n2,mx,female,rectal adenocarcinoma,0.0,Cluster4,2.543103876,20,CMS2,3.0,2376
+TCGA-A6-5660,MSS,73.0,0,colon,stage iiic,t3,n2b,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.362631783,11,CMS2,3.0,888
+TCGA-EI-6509,MSS,53.0,0,rectum,stage iiic,t3,n2b,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.991263566,40,,3.0,517
+TCGA-DM-A1HA,MSS,82.0,0,colon,stage iiic,t3,n2,m0,male,colon adenocarcinoma,,CIMP-L,0.653037984,0,,3.0,4000
+TCGA-F5-6464,MSS,77.0,1,rectum,stage iiic,t4b,n2a,m0,female,rectal adenocarcinoma,,Cluster4,3.913713953,0,CMS4,3.0,303
+TCGA-DM-A1DA,MSI-L,71.0,1,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,CIMP-H,1.026565891,40,CMS3,3.0,228
+TCGA-AH-6643,MSS,50.0,1,rectum,stage iiic,t3,n2b,m0,male,rectal adenocarcinoma,0.0,Cluster4,1.896407752,30,,3.0,1314
+TCGA-DM-A288,MSS,68.0,1,colon,stage iiic,t3,n2,m0,male,colon mucinous adenocarcinoma,,CIMP-L,1.130986822,20,CMS3,3.0,427
+TCGA-AA-3548,MSS,71.0,0,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,2.045509302,20,,3.0,1034
+TCGA-AA-3529,MSI-L,78.0,1,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,1.969203876,10,CMS2,3.0,0
+TCGA-A6-2677,MSS,68.0,1,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,Cluster3,1.585466667,5,CMS2,3.0,740
+TCGA-AA-3848,MSS,82.0,1,colon,stage iiic,t3,n2,m0,female,colon adenocarcinoma,0.0,CIMP-L,1.506346512,10,CMS2,3.0,306
+TCGA-AG-3728,MSS,73.0,0,rectum,stage iiib,t3,n1,m0,male,rectal adenocarcinoma,,,2.539055039,20,CMS4,3.0,912
+TCGA-CM-4751,MSS,62.0,0,colon,stage iiib,t3,n1b,m0,male,colon adenocarcinoma,,CIMP-H,2.5264,15,CMS1,3.0,822
+TCGA-AG-3612,MSS,55.0,0,rectum,stage iiib,t3,n1,m0,female,rectal adenocarcinoma,0.0,Cluster3,2.47195969,15,CMS4,3.0,608
+TCGA-D5-6535,MSS,80.0,0,colon,stage iiib,t3,n1,mx,female,colon adenocarcinoma,0.0,CIMP-L,2.280168992,0,,3.0,460
+TCGA-AA-A00U,MSS,50.0,0,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.682267442,8,CMS3,3.0,518
+TCGA-CM-6680,MSS,78.0,0,colon,stage iiib,t3,n2a,m0,female,colon adenocarcinoma,0.0,Cluster4,2.822645736,15,,3.0,366
+TCGA-AA-A00J,MSI-H,80.0,0,colon,stage iiib,t4,n1,m0,male,colon mucinous adenocarcinoma,1.0,CIMP-H,2.219151163,14,CMS1,3.0,549
+TCGA-AG-3601,MSI-L,68.0,0,rectum,stage iiib,t4,n1,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.90591938,5,CMS2,3.0,0
+TCGA-AA-3949,MSI-H,87.0,0,colon,stage iiib,t3,n1,m0,female,colon mucinous adenocarcinoma,1.0,CIMP-H,2.240508527,40,CMS1,3.0,791
+TCGA-AG-A00C,MSS,49.0,0,rectum,stage iiib,t3,n1,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.098054264,14,CMS2,3.0,183
+TCGA-AZ-4615,MSI-H,84.0,0,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,,CIMP-H,2.363170543,10,CMS1,3.0,1002
+TCGA-DC-5869,MSS,62.0,0,rectum,stage iiib,t3,n1a,m0,female,rectal adenocarcinoma,0.0,Cluster4,2.578616279,0,CMS2,3.0,943
+TCGA-AH-6903,MSS,46.0,0,rectum,stage iiib,t3,n1b,m0,male,rectal mucinous adenocarcinoma,0.0,Cluster4,1.561144961,25,CMS3,3.0,592
+TCGA-CM-5348,MSS,72.0,0,colon,stage iiib,t3,n1a,m0,male,colon adenocarcinoma,0.0,Cluster4,3.651127907,10,CMS4,3.0,699
+TCGA-EI-6508,MSS,48.0,0,rectum,stage iiib,t3,n1a,m0,female,rectal adenocarcinoma,0.0,Cluster3,2.374562016,18,CMS2,3.0,636
+TCGA-CI-6621,MSS,63.0,0,rectum,stage iiib,t3,n1,mx,male,rectal adenocarcinoma,0.0,Cluster4,2.800373643,15,CMS2,3.0,419
+TCGA-EI-6512,MSS,64.0,0,rectum,stage iiib,t3,n1,m0,female,rectal adenocarcinoma,,CIMP-L,1.894363566,15,CMS3,3.0,538
+TCGA-A6-6137,MSS,55.0,0,colon,stage iiib,t3,n1c,m0,male,colon adenocarcinoma,,Cluster4,2.043463566,0,,3.0,824
+TCGA-AA-A01F,MSS,72.0,0,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,0.0,Cluster3,0.848613953,18,CMS2,3.0,974
+TCGA-AG-3909,MSS,69.0,0,rectum,stage iiib,t3,n1,m0,female,rectal adenocarcinoma,0.0,Cluster3,2.047257364,20,CMS2,3.0,608
+TCGA-AZ-6605,MSS,77.0,1,colon,stage iiib,t4,n1,m0,male,colon adenocarcinoma,0.0,Cluster4,3.75414031,15,CMS4,3.0,159
+TCGA-BM-6198,MSS,73.0,0,rectum,stage iiib,t3,n1,,male,rectal adenocarcinoma,0.0,Cluster4,2.378578295,25,,3.0,646
+TCGA-AA-3982,MSI-L,75.0,0,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,0.0,Cluster3,2.439782171,23,,3.0,822
+TCGA-DC-4745,MSS,49.0,0,rectum,stage iiib,t3,n1a,m0,female,rectal adenocarcinoma,,Cluster4,1.941643411,20,,3.0,639
+TCGA-CM-6162,MSI-H,48.0,0,colon,stage iiib,t3,n1a,m0,female,colon mucinous adenocarcinoma,1.0,Cluster4,4.06437907,15,CMS4,3.0,365
+TCGA-CA-6715,MSS,63.0,0,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,,Cluster3,1.636887597,20,CMS2,3.0,383
+TCGA-DM-A28F,MSS,73.0,1,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,,Cluster3,1.518255814,17,,3.0,1094
+TCGA-D5-6537,MSS,64.0,1,colon,stage iiib,t3,n1a,mx,male,colon adenocarcinoma,0.0,Cluster4,1.251027132,0,CMS2,3.0,146
+TCGA-AY-6386,MSS,66.0,0,colon,stage iiib,t3,n1a,m0,female,colon adenocarcinoma,0.0,CIMP-L,1.418948837,25,CMS3,3.0,542
+TCGA-AG-3893,MSS,74.0,0,rectum,stage iiib,t3,n1,m0,male,rectal adenocarcinoma,0.0,Cluster3,2.76775969,20,CMS4,3.0,1065
+TCGA-AA-3994,MSS,69.0,0,colon,stage iiib,t3,n1,m0,male,colon mucinous adenocarcinoma,0.0,CIMP-H,1.963417054,5,CMS1,3.0,822
+TCGA-AG-A01L,MSS,58.0,0,rectum,stage iiib,t3,n1,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.456972868,14,CMS2,3.0,0
+TCGA-AG-A032,MSS,68.0,0,rectum,stage iiib,t3,n1,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.839121705,35,CMS2,3.0,1157
+TCGA-AA-3525,MSI-H,89.0,0,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,1.0,CIMP-H,1.512866667,10,CMS1,3.0,245
+TCGA-AZ-4308,MSS,47.0,0,colon,stage iiib,t3,n1,m0,female,colon adenocarcinoma,,Cluster4,2.281800775,6,CMS4,3.0,3324
+TCGA-A6-2672,MSI-H,82.0,0,colon,stage iiib,t3,n1,m0,female,colon adenocarcinoma,1.0,CIMP-H,2.3907,15,CMS1,3.0,1419
+TCGA-CK-5914,MSS,81.0,0,colon,stage iiib,t3,n1,mx,male,colon adenocarcinoma,0.0,CIMP-L,2.167896899,10,CMS2,3.0,669
+TCGA-AA-3955,MSS,38.0,0,colon,stage iiib,t2,n2a,m0,male,colon adenocarcinoma,0.0,Cluster3,1.807075969,20,CMS2,3.0,638
+TCGA-D5-5541,MSS,63.0,0,colon,stage iiib,t3,n1a,m0,male,colon adenocarcinoma,0.0,Cluster4,2.611332558,10,CMS4,3.0,1701
+TCGA-CM-6172,MSS,70.0,0,colon,stage iiib,t3,n1a,m0,female,colon adenocarcinoma,0.0,Cluster4,2.687837984,15,CMS3,3.0,335
+TCGA-F4-6459,MSS,61.0,1,colon,stage iiib,t3,n2a,m0,female,colon adenocarcinoma,0.0,Cluster4,3.480734884,20,CMS4,3.0,262
+TCGA-A6-5657,MSS,65.0,0,colon,stage iiib,t3,n1,m0,male,colon adenocarcinoma,,CIMP-L,3.286576744,0,,3.0,962
+TCGA-CM-5344,MSS,39.0,0,colon,stage iiib,t3,n1b,m0,female,colon adenocarcinoma,0.0,Cluster4,2.667993023,0,CMS4,3.0,670
+TCGA-DM-A1HB,MSI-H,75.0,0,colon,stage iiib,t3,n1,m0,male,,,CIMP-H,1.305810078,0,CMS1,3.0,4126
+TCGA-F4-6460,MSS,51.0,1,colon,stage iiib,t3,n1,m0,female,colon adenocarcinoma,0.0,Cluster4,3.150595349,9,CMS4,3.0,972
+TCGA-A6-5667,MSS,40.0,0,colon,stage iiib,t3,n1a,mx,female,colon adenocarcinoma,0.0,Cluster4,2.560075969,0,CMS2,3.0,887
+TCGA-D5-6538,MSI-L,79.0,0,colon,stage iiib,t3,n2,m0,female,colon adenocarcinoma,0.0,CIMP-H,1.388274419,0,CMS3,3.0,521
+TCGA-A6-4107,MSS,57.0,0,colon,stage iiib,t3,n1b,m0,female,colon adenocarcinoma,,CIMP-H,2.404499225,15,CMS4,3.0,987
+TCGA-A6-6649,MSS,66.0,0,colon,stage iiib,t3,n1b,m0,male,colon adenocarcinoma,0.0,CIMP-H,3.12572093,0,,3.0,735
+TCGA-AA-3860,MSS,53.0,0,colon,stage iiib,t3,n1,m0,female,colon adenocarcinoma,0.0,Cluster3,2.565848062,10,CMS4,3.0,945
+TCGA-D5-6926,MSS,65.0,0,colon,stage iiib,t4a,n1,m0,male,colon adenocarcinoma,,Cluster4,3.307042636,76,CMS4,3.0,275
+TCGA-AF-6136,MSS,72.0,0,rectum,stage iiib,t3,n1b,mx,female,rectal adenocarcinoma,0.0,Cluster4,2.045916279,0,CMS3,3.0,741
+TCGA-CM-5863,MSS,60.0,0,colon,stage iiib,t3,n1b,m0,female,colon mucinous adenocarcinoma,0.0,Cluster4,2.703651163,0,,3.0,457
+TCGA-D5-5538,MSS,60.0,1,colon,stage iiib,t3,n1b,m0,female,colon adenocarcinoma,0.0,Cluster3,2.618436434,0,CMS4,3.0,1661
+TCGA-4N-A93T,,67.0,0,colon,stage iiib,t4a,n1b,m0,male,colon adenocarcinoma,,,0.994126357,35,,3.0,146
+TCGA-EI-6511,MSS,52.0,0,rectum,stage iiib,t3,n1,m0,male,rectal adenocarcinoma,0.0,Cluster4,2.465692248,20,,3.0,482
+TCGA-CK-4947,MSS,46.0,0,colon,stage iiib,t4,n1,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.686428682,10,,3.0,534
+TCGA-A6-2678,MSS,43.0,0,colon,stage iiib,t3,n1,m0,female,colon adenocarcinoma,0.0,Cluster3,2.373449612,10,,3.0,1286
+TCGA-DC-6683,MSS,43.0,0,rectum,stage iiib,t3,n1b,m0,male,rectal adenocarcinoma,0.0,Cluster4,2.374437984,20,CMS2,3.0,762
+TCGA-AG-3885,MSS,71.0,0,rectum,stage iiib,t3,n1,m0,female,rectal adenocarcinoma,,CIMP-L,1.489700775,5,CMS3,3.0,546
+TCGA-CM-4748,MSS,53.0,0,colon,stage iiib,t4a,n1a,m0,male,colon mucinous adenocarcinoma,0.0,Cluster4,2.657728682,15,,3.0,792
+TCGA-AA-A01C,MSS,75.0,0,colon,stage iiia,t2,n1,m0,male,colon adenocarcinoma,,Cluster3,2.365704651,25,CMS4,3.0,457
+TCGA-AZ-6608,MSI-L,55.0,1,colon,stage iiia,t2,n1,m0,female,colon adenocarcinoma,,Cluster3,0.679985271,10,CMS2,3.0,59
+TCGA-CM-4750,MSI-L,34.0,0,colon,stage iiia,t1,n1b,m0,female,colon adenocarcinoma,,Cluster4,1.751762791,15,CMS2,3.0,244
+TCGA-EI-6881,MSS,60.0,0,rectum,stage iiia,t3,n1,m0,male,rectal adenocarcinoma,,Cluster4,1.580834109,10,,3.0,499
+TCGA-AA-3976,MSS,70.0,0,colon,stage iiia,t2,n1,m0,male,colon adenocarcinoma,0.0,Cluster3,2.102110078,20,CMS2,3.0,791
+TCGA-DY-A1H8,MSS,77.0,1,rectum,stage iiia,t2,n1,m0,female,rectal adenocarcinoma,0.0,Cluster4,0.739544961,0,CMS2,3.0,992
+TCGA-DC-6155,MSS,31.0,0,rectum,stage iiia,t2,n1b,m0,female,rectal adenocarcinoma,0.0,Cluster4,1.180034109,10,,3.0,425
+TCGA-D5-6922,MSS,76.0,0,colon,stage iiia,t3,n1,m0,male,colon adenocarcinoma,,Cluster4,3.40425814,35,CMS4,3.0,308
+TCGA-EI-6917,MSS,33.0,0,rectum,stage iiia,t3,n1,m0,male,rectal adenocarcinoma,1.0,CIMP-H,2.809975194,52,CMS4,3.0,531
+TCGA-EI-6884,MSS,71.0,0,rectum,stage iiia,t3,n1,m0,male,rectal adenocarcinoma,0.0,Cluster4,2.93016124,15,,3.0,328
+TCGA-D5-5539,MSS,60.0,0,colon,stage iiia,t3,n1,m0,male,colon mucinous adenocarcinoma,0.0,Cluster4,2.681627907,10,,3.0,596
+TCGA-CM-5341,MSS,82.0,0,colon,stage iiia,t2,n1a,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.305233333,20,CMS4,3.0,884
+TCGA-AA-3842,MSS,51.0,0,colon,stage iiia,t2,n1,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.47106124,10,,3.0,1126
+TCGA-CK-4948,MSI-L,45.0,0,colon,stage iii,t3,n1,m0,female,colon adenocarcinoma,,Cluster4,2.703031783,30,CMS4,3.0,4502
+TCGA-AA-3678,MSS,60.0,0,colon,stage iii,t2,n1,m0,female,colon adenocarcinoma,0.0,Cluster3,1.977475969,35,CMS2,3.0,1430
+TCGA-AA-3516,MSI-H,74.0,1,colon,stage iii,t3,n2,m0,female,colon mucinous adenocarcinoma,1.0,CIMP-H,1.606044186,10,CMS1,3.0,396
+TCGA-AA-A01P,MSI-H,80.0,1,colon,stage iii,t3,n1,m0,female,colon adenocarcinoma,1.0,CIMP-H,2.687148062,38,CMS1,3.0,1158
+TCGA-AA-A01X,MSS,80.0,0,colon,stage iii,t2,n1,m0,female,colon adenocarcinoma,0.0,Cluster3,2.026952713,17,CMS2,3.0,791
+TCGA-AA-3519,MSS,63.0,0,colon,stage iii,t3,n1,m0,male,colon adenocarcinoma,0.0,Cluster3,1.890910853,10,CMS2,3.0,276
+TCGA-AA-3672,MSI-H,90.0,0,colon,stage iii,t3,n1,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.653627132,8,CMS1,3.0,28
+TCGA-AG-3586,MSS,72.0,0,rectum,stage iii,t3,n2,m0,female,,0.0,Cluster3,1.762643411,5,,3.0,31
+TCGA-AA-A03F,MSS,90.0,1,colon,stage iii,t3,n2,m0,female,colon mucinous adenocarcinoma,0.0,CIMP-H,1.174582171,25,,3.0,549
+TCGA-AA-A01T,MSS,63.0,0,colon,stage iii,t3,n1,m0,female,colon adenocarcinoma,0.0,Cluster3,1.029546512,13,,3.0,1005
+TCGA-AG-A036,MSS,71.0,0,rectum,stage iii,t3,n2,m0,male,rectal adenocarcinoma,0.0,Cluster4,2.416344961,18,,3.0,3562
+TCGA-AA-3971,MSS,58.0,0,colon,stage iii,t3,n1,m0,male,colon adenocarcinoma,0.0,Cluster3,2.173836434,15,CMS2,3.0,489
+TCGA-AA-3811,MSI-H,84.0,1,colon,stage iii,t3,n2,m0,female,colon adenocarcinoma,1.0,Cluster3,2.213134109,5,CMS1,3.0,306
+TCGA-AA-A01S,MSI-L,47.0,0,colon,stage iii,t3,n1,m0,female,colon adenocarcinoma,0.0,Cluster3,0.858355039,4,CMS2,3.0,31
+TCGA-AA-A01R,MSI-H,47.0,0,colon,stage iii,t3,n2,m0,male,colon mucinous adenocarcinoma,1.0,CIMP-L,1.450013953,17,CMS1,3.0,1065
+TCGA-AA-3666,MSS,68.0,1,colon,stage iii,t3,n1,m0,male,colon adenocarcinoma,0.0,Cluster3,1.828942636,0,,3.0,61
+TCGA-AG-3727,MSS,78.0,0,rectum,stage iii,t3,n1,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.983722481,20,,3.0,30
+TCGA-AG-A020,MSS,57.0,0,rectum,stage iii,t3,n1,m0,female,rectal mucinous adenocarcinoma,0.0,Cluster3,1.047700775,10,CMS3,3.0,31
+TCGA-AA-3681,MSS,77.0,0,colon,stage iii,t3,n1,m0,female,colon adenocarcinoma,0.0,CIMP-L,1.874831783,5,CMS3,3.0,182
+TCGA-EI-6883,MSS,63.0,0,rectum,stage iic,t3,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-L,1.617006977,35,CMS2,2.0,350
+TCGA-A6-5666,MSI-L,78.0,0,colon,stage iic,t4b,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.134445736,0,CMS2,2.0,995
+TCGA-AA-3947,MSI-H,60.0,0,colon,stage iib,t4,n0,m0,female,colon mucinous adenocarcinoma,1.0,CIMP-H,1.923773643,15,,2.0,1004
+TCGA-A6-2676,MSI-H,75.0,1,colon,stage iib,t4,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.781028682,7,CMS1,2.0,1305
+TCGA-A6-2679,MSS,73.0,0,colon,stage iib,t3,n0,,female,colon adenocarcinoma,,CIMP-L,1.328495349,15,,2.0,1366
+TCGA-CI-6622,MSS,74.0,0,rectum,stage iib,t4,n0,m0,male,rectal adenocarcinoma,0.0,Cluster4,1.627642636,15,CMS3,2.0,1362
+TCGA-A6-3809,MSI-H,71.0,0,colon,stage iib,t4,n0,m0,female,colon mucinous adenocarcinoma,,CIMP-H,1.922572093,15,CMS1,2.0,996
+TCGA-AA-A010,MSI-L,46.0,0,colon,stage iib,t4,n0,m0,female,colon adenocarcinoma,1.0,Cluster3,1.535179845,28,,2.0,1064
+TCGA-AA-3856,MSS,59.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.002190698,15,CMS2,2.0,30
+TCGA-DM-A280,MSS,70.0,1,colon,stage iia,t3,n0,m0,female,colon mucinous adenocarcinoma,,Cluster4,1.476997674,30,CMS3,2.0,236
+TCGA-CA-6716,MSS,65.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.492294574,25,CMS2,2.0,371
+TCGA-D5-6529,MSI-L,69.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,3.098850388,0,CMS4,2.0,614
+TCGA-AU-3779,MSS,80.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,2.57724031,15,CMS2,2.0,441
+TCGA-A6-5661,MSI-H,80.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.858043411,0,,2.0,1020
+TCGA-D5-6541,MSS,49.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,2.746762791,0,CMS4,2.0,474
+TCGA-A6-6140,MSS,62.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,Cluster4,1.582566667,0,CMS2,2.0,734
+TCGA-AA-3984,MSS,61.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,Cluster3,2.404292248,15,,2.0,0
+TCGA-DM-A1D6,MSS,88.0,1,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,0.0,Cluster4,1.247116279,30,CMS3,2.0,1518
+TCGA-AA-3837,MSS,67.0,0,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,0.0,CIMP-L,2.440027132,25,,2.0,1186
+TCGA-A6-5665,MSI-H,84.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.211395349,20,,2.0,671
+TCGA-5M-AATE,,76.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,,1.794810853,8,,2.0,1200
+TCGA-CA-6719,MSI-L,77.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,3.115197674,30,CMS4,2.0,435
+TCGA-AA-3852,MSI-L,88.0,1,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,0.0,CIMP-L,2.369044961,20,,2.0,0
+TCGA-CM-6164,MSS,46.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,2.297447287,15,CMS2,2.0,883
+TCGA-4T-AA8H,,42.0,0,colon,stage iia,t3,n0,mx,female,colon mucinous adenocarcinoma,,,0.883196124,15,,2.0,385
+TCGA-AA-3531,MSI-L,75.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,1.449082946,20,CMS2,2.0,1035
+TCGA-A6-2681,MSS,73.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,2.714148837,10,CMS4,2.0,1387
+TCGA-AA-3956,MSS,65.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.543390698,20,,2.0,1035
+TCGA-AA-3532,MSS,63.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.679039535,25,CMS4,2.0,882
+TCGA-D5-6532,MSI-L,61.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.602748062,20,CMS2,2.0,555
+TCGA-AA-3812,MSS,82.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.437891473,10,CMS4,2.0,1066
+TCGA-CA-6718,MSS,46.0,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-H,2.510890698,25,CMS1,2.0,306
+TCGA-DY-A0XA,MSS,57.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster4,1.864433333,0,CMS2,2.0,3846
+TCGA-AA-3939,MSS,83.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.815308527,20,,2.0,395
+TCGA-AA-3979,MSS,84.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.280646512,0,CMS2,2.0,730
+TCGA-A6-6650,MSS,69.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,1.557887597,0,CMS2,2.0,627
+TCGA-AF-3400,MSS,54.0,0,rectum,stage iia,t3,n0,m0,male,rectal mucinous adenocarcinoma,0.0,Cluster3,3.259809302,10,CMS4,2.0,1049
+TCGA-AF-A56K,,56.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,,,3.035386822,0,,2.0,2635
+TCGA-AF-A56N,,47.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,,,2.777644186,5,,2.0,360
+TCGA-AA-3841,MSS,66.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,Cluster3,2.024527132,10,CMS2,2.0,1124
+TCGA-F4-6703,MSI-H,64.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,Cluster4,4.076800775,30,CMS4,2.0,1456
+TCGA-AG-3881,MSS,83.0,0,rectum,stage iia,t3,n0,m0,female,,0.0,CIMP-L,2.42539845,5,CMS4,2.0,579
+TCGA-DM-A0X9,MSS,71.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,1.542591473,0,CMS3,2.0,3641
+TCGA-DM-A1D7,MSS,82.0,1,colon,stage iia,t3,n0,m0,male,,0.0,Cluster4,1.625763566,0,CMS2,2.0,405
+TCGA-F5-6571,MSI-L,62.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster4,2.991793798,20,CMS4,2.0,1288
+TCGA-AA-3534,MSS,78.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.273766667,50,CMS2,2.0,882
+TCGA-AG-3591,MSS,66.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.363936434,10,CMS3,2.0,1035
+TCGA-D5-5540,MSI-L,73.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.39007907,0,CMS2,2.0,1706
+TCGA-AG-3594,MSS,77.0,1,rectum,stage iia,t3,n0,m0,male,rectal mucinous adenocarcinoma,0.0,Cluster3,1.777906977,15,CMS3,2.0,61
+TCGA-AA-3815,MSI-H,65.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,CIMP-H,1.882437984,10,CMS1,2.0,1005
+TCGA-CM-6674,MSI-H,39.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,Cluster4,2.462275969,15,CMS1,2.0,394
+TCGA-EI-6882,MSI-H,59.0,0,rectum,stage iia,t3,n0,m0,male,rectal mucinous adenocarcinoma,1.0,CIMP-L,2.117274419,5,CMS3,2.0,262
+TCGA-CA-5797,MSS,56.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.553196899,30,CMS2,2.0,383
+TCGA-D5-6531,MSS,75.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,2.185988372,0,,2.0,540
+TCGA-D5-6920,MSS,77.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,CIMP-H,2.242631008,20,CMS3,2.0,377
+TCGA-D5-6930,MSI-H,67.0,0,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,1.0,Cluster4,2.577084496,34,CMS1,2.0,406
+TCGA-DM-A1DB,MSS,68.0,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,0.944579845,0,CMS2,2.0,1348
+TCGA-F4-6854,MSS,77.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,2.696684496,35,CMS2,2.0,16
+TCGA-AA-3970,MSS,65.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,,1.978784496,10,CMS2,2.0,1096
+TCGA-CM-5349,MSS,68.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.627171318,8,CMS4,2.0,915
+TCGA-CM-6168,MSI-L,84.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,3.866049612,30,CMS4,2.0,395
+TCGA-AA-A00L,MSS,66.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.504782946,5,CMS2,2.0,1157
+TCGA-AG-3902,MSS,61.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-L,1.93904186,10,,2.0,974
+TCGA-D5-6924,MSS,68.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,3.371325581,74,CMS4,2.0,435
+TCGA-AG-3592,MSI-L,68.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-L,2.25934186,10,CMS2,2.0,1035
+TCGA-CA-5255,MSS,45.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,CIMP-L,1.13229845,60,CMS3,2.0,376
+TCGA-CK-6747,MSI-H,87.0,0,colon,stage iia,t3,n0,mx,female,colon adenocarcinoma,,CIMP-L,2.10336124,18,CMS3,2.0,2523
+TCGA-D5-6534,MSS,62.0,0,colon,stage iia,t3,n0,m0,female,colon mucinous adenocarcinoma,0.0,Cluster4,4.203187597,0,CMS4,2.0,1316
+TCGA-AG-3608,,79.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,0.0,CIMP-L,1.843427907,10,CMS2,2.0,485
+TCGA-DM-A28E,MSS,72.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,1.052747287,17,,2.0,3648
+TCGA-A6-6141,MSS,31.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,Cluster4,2.114025581,0,CMS3,2.0,255
+TCGA-AA-3851,MSS,74.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.0442,10,CMS3,2.0,1006
+TCGA-AA-3833,MSI-H,63.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,2.576684496,15,,2.0,485
+TCGA-CM-5860,MSS,44.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,3.168431783,0,CMS4,2.0,974
+TCGA-DM-A28C,MSS,74.0,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,Cluster4,1.278278295,18,,2.0,2475
+TCGA-DM-A28M,MSS,63.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,0.746696899,35,CMS3,2.0,2895
+TCGA-AA-3555,MSS,81.0,0,colon,stage iia,t3,n0,m0,female,colon mucinous adenocarcinoma,1.0,CIMP-L,2.469602326,60,CMS1,2.0,911
+TCGA-AA-A02R,MSI-H,84.0,1,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,CIMP-H,2.004942636,30,CMS1,2.0,670
+TCGA-AA-A00A,MSI-H,80.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-H,2.073070543,5,CMS1,2.0,1157
+TCGA-AA-3517,MSI-L,60.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.21265969,10,CMS2,2.0,1186
+TCGA-AY-6197,MSI-H,60.0,0,colon,stage iia,t3,n0,,male,colon adenocarcinoma,1.0,CIMP-H,1.77009845,15,,2.0,652
+TCGA-AG-3611,MSS,72.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.402406202,32,CMS3,2.0,424
+TCGA-AZ-4681,MSS,79.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,Cluster3,0.964303876,10,,2.0,3247
+TCGA-CA-5254,MSI-L,42.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,CIMP-H,2.315393023,15,CMS1,2.0,386
+TCGA-AA-3846,MSS,74.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.047768217,10,CMS2,2.0,518
+TCGA-CL-5918,MSS,90.0,0,rectum,stage iia,t3,n0,mx,female,rectal adenocarcinoma,0.0,CIMP-L,1.202110853,15,CMS2,2.0,218
+TCGA-AG-3887,MSS,68.0,0,rectum,stage iia,t3,n0,m0,male,rectal mucinous adenocarcinoma,0.0,Cluster3,1.948999225,8,,2.0,1124
+TCGA-CM-4752,MSS,58.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,2.20482093,10,CMS4,2.0,396
+TCGA-AA-A017,MSS,57.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.226225581,15,CMS2,2.0,457
+TCGA-CM-6169,MSS,67.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,Cluster4,3.536289147,20,CMS4,2.0,396
+TCGA-CM-6679,MSS,58.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,3.418112403,25,CMS4,2.0,306
+TCGA-CM-6165,MSS,74.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,Cluster4,3.064479845,20,CMS4,2.0,488
+TCGA-AG-3593,MSS,72.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,2.042041085,12,CMS2,2.0,1035
+TCGA-D5-6536,MSS,73.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,2.172425581,0,,2.0,543
+TCGA-AA-3814,MSS,85.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.824949612,18,CMS4,2.0,0
+TCGA-DM-A282,MSS,60.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,1.943234884,24,CMS2,2.0,4233
+TCGA-AG-3598,MSS,69.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-L,1.49615814,5,CMS2,2.0,1522
+TCGA-F4-6805,MSS,58.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,3.541027132,30,CMS4,2.0,1047
+TCGA-EI-6507,MSI-H,60.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,1.0,Cluster4,2.605936434,20,CMS1,2.0,607
+TCGA-D5-6932,MSS,69.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,CIMP-L,2.326644961,35,,2.0,346
+TCGA-AA-3554,MSI-H,62.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,Cluster3,2.757255814,40,CMS1,2.0,546
+TCGA-AF-2692,MSS,54.0,0,,stage iia,t3,n0,m0,female,,0.0,Cluster3,2.449369767,5,,2.0,412
+TCGA-AG-3894,MSS,65.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.862889922,12,CMS2,2.0,426
+TCGA-CA-5796,MSS,52.0,0,colon,stage iia,t3,n0,m0,female,colon mucinous adenocarcinoma,0.0,CIMP-L,1.393975969,15,CMS3,2.0,377
+TCGA-DC-6682,MSS,57.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,Cluster4,1.514092248,25,CMS2,2.0,762
+TCGA-AA-3818,MSS,78.0,1,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,1.793054264,30,CMS3,2.0,30
+TCGA-A6-2686,MSI-H,81.0,1,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,CIMP-H,2.33158062,10,,2.0,1126
+TCGA-CA-5256,MSS,54.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,1.490399225,15,CMS2,2.0,379
+TCGA-F4-6855,MSI-L,70.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,3.320458915,30,CMS4,2.0,1442
+TCGA-DM-A1D9,MSS,67.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,1.681009302,0,CMS3,2.0,4270
+TCGA-DM-A1D0,MSS,79.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,0.856763566,10,CMS2,2.0,3974
+TCGA-DM-A0XD,MSI-L,65.0,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,1.707941085,25,,2.0,743
+TCGA-A6-3810,MSS,62.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.927276744,10,CMS4,2.0,1111
+TCGA-AY-A69D,,55.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,,1.888646512,25,,2.0,543
+TCGA-DM-A1D4,MSI-L,80.0,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,0.822946512,0,CMS3,2.0,2821
+TCGA-CM-4743,MSI-H,69.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-H,1.32066124,5,CMS1,2.0,701
+TCGA-F4-6570,MSI-H,78.0,1,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,2.683686047,15,CMS1,2.0,188
+TCGA-D5-6927,MSI-H,34.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-L,2.653692248,21,CMS1,2.0,287
+TCGA-AG-A011,MSS,80.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-L,1.982010078,19,,2.0,1126
+TCGA-DY-A1DE,MSS,56.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,,Cluster3,2.027631008,20,CMS2,2.0,3932
+TCGA-CM-6677,MSS,75.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.641104651,20,CMS2,2.0,337
+TCGA-CK-4951,MSI-H,79.0,1,colon,stage iia,t3,n0,m0,female,colon mucinous adenocarcinoma,,CIMP-H,2.909176744,20,CMS1,2.0,2134
+TCGA-AA-3831,MSS,66.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.036788372,10,CMS2,2.0,547
+TCGA-AA-3522,MSS,67.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.505044961,20,CMS3,2.0,1127
+TCGA-A6-4105,MSS,79.0,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,2.76074031,30,,2.0,442
+TCGA-EI-6514,MSS,59.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,,Cluster4,2.541527907,40,CMS4,2.0,496
+TCGA-DM-A28G,MSS,75.0,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,CIMP-L,1.532704651,23,CMS3,2.0,1849
+TCGA-AA-A00K,MSI-L,79.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.874356589,10,CMS3,2.0,549
+TCGA-DM-A28K,MSS,75.0,0,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,,CIMP-L,1.076641085,22,,2.0,2988
+TCGA-AG-4015,MSS,85.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.796099225,15,CMS2,2.0,0
+TCGA-AD-6889,MSI-H,,1,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,Cluster4,1.355069767,15,CMS3,2.0,2532
+TCGA-AZ-4315,MSS,61.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,Cluster4,1.783635659,20,,2.0,1776
+TCGA-AA-A01G,MSI-L,63.0,0,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,0.0,CIMP-L,1.484391473,37,,2.0,365
+TCGA-AA-3845,MSI-H,86.0,1,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,2.380116279,8,CMS1,2.0,0
+TCGA-F5-6465,MSS,64.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,,Cluster4,3.615695349,0,CMS4,2.0,1506
+TCGA-A6-3808,MSI-L,73.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,3.283636434,30,CMS4,2.0,1014
+TCGA-AA-3966,MSI-H,89.0,0,colon,stage iia,t3,n0,m0,female,colon mucinous adenocarcinoma,1.0,CIMP-L,2.777348062,20,CMS1,2.0,61
+TCGA-AA-3862,MSS,82.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,,Cluster3,1.858858915,10,,2.0,914
+TCGA-AA-3950,MSI-H,79.0,0,colon,stage iia,t3,n0,m0,female,colon mucinous adenocarcinoma,,CIMP-H,2.394489147,20,,2.0,730
+TCGA-AM-5821,MSI-H,68.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.990850388,10,CMS1,2.0,28
+TCGA-AA-3527,MSS,89.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,1.84876124,40,CMS4,2.0,0
+TCGA-AA-A00E,MSI-H,65.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-H,1.867548062,19,CMS1,2.0,913
+TCGA-D5-5537,MSS,83.0,1,colon,stage iia,t3,n2,mx,male,colon adenocarcinoma,0.0,Cluster4,2.393472868,15,CMS2,2.0,1381
+TCGA-AG-4008,MSS,63.0,0,rectum,stage iia,t3,n0,m0,male,rectal adenocarcinoma,0.0,Cluster3,3.053927907,20,CMS4,2.0,518
+TCGA-AG-3578,MSS,76.0,0,rectum,stage iia,t3,n0,m0,female,rectal mucinous adenocarcinoma,0.0,Cluster3,2.110045736,10,CMS3,2.0,974
+TCGA-AD-A5EJ,,74.0,0,colon,stage iia,t3,n0,mx,female,colon adenocarcinoma,,,1.722600775,0,,2.0,0
+TCGA-AA-A00Z,MSS,70.0,0,colon,stage iia,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.998534884,7,CMS2,2.0,669
+TCGA-F4-6463,MSS,51.0,0,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,0.0,Cluster4,3.118379845,0,CMS4,2.0,1087
+TCGA-A6-2685,MSS,48.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,3.607990698,5,CMS4,2.0,1133
+TCGA-AA-3518,MSI-H,81.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.635903101,10,CMS1,2.0,31
+TCGA-A6-2675,MSS,78.0,0,colon,stage iia,t3,n0,mx,male,colon adenocarcinoma,0.0,Cluster4,3.347162016,10,CMS4,2.0,1321
+TCGA-D5-6928,MSI-H,80.0,0,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,1.0,Cluster4,3.364712403,40,CMS1,2.0,354
+TCGA-CM-5861,MSI-H,63.0,0,colon,stage iia,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.394577519,0,CMS1,2.0,457
+TCGA-CA-6717,MSS,57.0,0,colon,stage iia,t3,n0,m0,male,colon mucinous adenocarcinoma,1.0,CIMP-L,3.377448837,25,CMS4,2.0,388
+TCGA-AG-4001,MSI-L,74.0,0,rectum,stage iia,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,3.227104651,40,CMS4,2.0,1096
+TCGA-AG-A02N,MSI-H,67.0,0,rectum,stage ii,t3,n0,m0,male,rectal adenocarcinoma,1.0,Cluster3,1.176112403,13,CMS3,2.0,1885
+TCGA-DT-5265,MSS,51.0,0,rectum,stage ii,t3,n0,m0,male,rectal mucinous adenocarcinoma,0.0,CIMP-H,2.981272093,30,CMS4,2.0,384
+TCGA-AA-3675,MSS,84.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,,,1.969945736,45,,2.0,1431
+TCGA-AA-3864,MSI-H,71.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,1.0,Cluster3,2.156781395,18,CMS1,2.0,1612
+TCGA-AZ-6601,MSI-H,68.0,1,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-L,2.408150388,20,CMS1,2.0,3042
+TCGA-AA-A029,MSI-L,67.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,0.959885271,14,CMS3,2.0,1581
+TCGA-AA-A022,MSI-H,88.0,0,colon,stage ii,t4,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.764462016,15,CMS1,2.0,0
+TCGA-AA-3521,MSS,87.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.202735659,40,,2.0,0
+TCGA-AA-3524,MSS,85.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.743705426,20,CMS2,2.0,1096
+TCGA-AG-4022,MSS,59.0,0,rectum,stage ii,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster4,3.120074419,15,CMS4,2.0,1400
+TCGA-AA-3664,MSS,74.0,0,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-H,1.67326124,0,CMS1,2.0,1643
+TCGA-AG-3575,MSS,51.0,0,rectum,stage ii,t3,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-H,2.5375,25,CMS4,2.0,365
+TCGA-AA-3715,MSI-H,77.0,1,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-H,2.67002093,5,CMS1,2.0,579
+TCGA-AZ-6598,MSI-H,77.0,1,colon,stage ii,t3,n0,mx,female,colon adenocarcinoma,1.0,CIMP-H,1.517075969,10,CMS1,2.0,1503
+TCGA-AG-3574,MSS,89.0,1,rectum,stage ii,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.692903101,10,CMS2,2.0,1096
+TCGA-AA-3492,MSI-H,89.0,1,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.924127132,10,CMS1,2.0,92
+TCGA-AA-3673,MSS,53.0,0,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.398596899,70,,2.0,1522
+TCGA-AA-3685,MSS,69.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.992293023,12,,2.0,1127
+TCGA-AA-3660,MSS,51.0,0,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.179163566,40,CMS2,2.0,2375
+TCGA-AA-3520,MSI-L,86.0,0,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.759110853,30,CMS4,2.0,731
+TCGA-AA-A01Q,MSI-H,48.0,0,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,1.0,CIMP-L,1.136100775,4,CMS3,2.0,31
+TCGA-AA-3510,MSS,70.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,,Cluster4,1.71038062,10,,2.0,1946
+TCGA-AA-3509,MSS,54.0,0,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,2.05887907,12,CMS2,2.0,1915
+TCGA-AA-A024,MSI-L,81.0,1,colon,stage ii,t3,n0,m0,male,colon mucinous adenocarcinoma,0.0,Cluster3,1.162397674,39,CMS3,2.0,1188
+TCGA-AG-A026,MSS,66.0,1,rectum,stage ii,t4,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-L,2.155586822,20,CMS4,2.0,59
+TCGA-AG-A01Y,MSS,49.0,0,rectum,stage ii,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster4,2.334482171,18,CMS4,2.0,0
+TCGA-AA-A01Z,MSS,68.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.415731008,14,,2.0,1126
+TCGA-AA-A02O,MSS,82.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,1.389844961,13,CMS3,2.0,28
+TCGA-AG-A01W,MSS,67.0,0,rectum,stage ii,t3,n0,m0,female,rectal adenocarcinoma,0.0,Cluster4,1.444149612,10,CMS2,2.0,0
+TCGA-AA-3697,MSI-L,77.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,1.0,Cluster4,1.882606202,10,CMS2,2.0,2587
+TCGA-A6-2680,MSS,72.0,0,colon,stage ii,t3,n0,m0,female,colon adenocarcinoma,,Cluster4,2.110226357,15,CMS2,2.0,1068
+TCGA-AZ-5403,MSS,43.0,1,colon,stage ii,t3,n0,mx,male,colon adenocarcinoma,0.0,Cluster4,2.867604651,35,CMS4,2.0,1910
+TCGA-AA-3655,MSS,68.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,2.422503101,10,CMS3,2.0,1856
+TCGA-AA-3663,MSI-H,42.0,0,colon,stage ii,t3,n0,m0,male,colon adenocarcinoma,1.0,CIMP-H,1.354465891,20,CMS3,2.0,212
+TCGA-AA-A01I,MSS,76.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.441256589,28,CMS2,1.0,943
+TCGA-AY-A71X,,54.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,,,0.782697674,29,,1.0,588
+TCGA-AY-A54L,,74.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,,,0.862303876,20,CMS3,1.0,525
+TCGA-D5-6898,MSS,51.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,,CIMP-L,2.879656589,40,CMS4,1.0,229
+TCGA-AA-3975,MSS,80.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.204631783,20,CMS2,1.0,1036
+TCGA-AA-3850,MSS,74.0,1,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.388451938,8,,1.0,0
+TCGA-DC-4749,MSS,57.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,Cluster4,1.851523256,15,CMS2,1.0,762
+TCGA-AZ-4313,MSI-H,51.0,0,colon,stage i,t1,n0,m0,female,colon adenocarcinoma,,Cluster4,1.289427132,0,CMS3,1.0,2310
+TCGA-AG-A015,MSS,64.0,0,rectum,stage i,t1,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.259903101,9,CMS3,1.0,1096
+TCGA-AG-3587,MSS,65.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,Cluster3,2.119000775,12,CMS2,1.0,1400
+TCGA-AA-A00W,MSS,80.0,0,colon,stage i,t1,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,0.943639535,4,CMS2,1.0,456
+TCGA-AA-3514,MSS,81.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.273596124,30,CMS4,1.0,31
+TCGA-A6-5659,MSS,82.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,2.474713178,0,CMS2,1.0,926
+TCGA-CM-4746,MSI-H,61.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,1.0,Cluster4,0.89324031,15,CMS3,1.0,1126
+TCGA-CM-6161,MSI-L,36.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,2.447673643,10,CMS2,1.0,457
+TCGA-F4-6569,MSS,60.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,3.996844961,30,CMS4,1.0,1087
+TCGA-CM-6166,MSS,48.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.175446512,20,CMS2,1.0,669
+TCGA-AF-5654,MSS,73.0,1,rectum,stage i,t2,n0,m0,female,rectal adenocarcinoma,0.0,,1.425934109,15,CMS2,1.0,512
+TCGA-AG-3892,MSS,57.0,0,rectum,stage i,t1,n0,m0,female,rectal adenocarcinoma,1.0,Cluster3,1.63614031,12,CMS3,1.0,396
+TCGA-AA-3980,MSS,89.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,1.889109302,13,CMS2,1.0,822
+TCGA-AA-3544,MSS,68.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.154486822,40,,1.0,426
+TCGA-AA-3553,MSI-L,61.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.368189922,50,CMS4,1.0,730
+TCGA-CM-6170,MSS,73.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,2.670044961,15,CMS2,1.0,457
+TCGA-AG-3726,MSS,63.0,0,rectum,stage i,t2,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.804462791,12,,1.0,243
+TCGA-DC-5337,MSS,69.0,0,rectum,stage i,t1,n0,m0,male,rectal adenocarcinoma,0.0,Cluster4,1.561011628,9,CMS2,1.0,792
+TCGA-AA-3506,MSS,77.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,,Cluster3,2.374415504,20,,1.0,1765
+TCGA-CM-6171,MSI-H,77.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,1.839015504,8,CMS1,1.0,427
+TCGA-CK-6751,MSS,88.0,0,colon,stage i,t2,n0,mx,female,colon mucinous adenocarcinoma,,CIMP-H,2.392475969,30,,1.0,3780
+TCGA-AA-A03J,MSS,65.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,1.85295814,10,,1.0,1246
+TCGA-AG-A025,MSS,62.0,0,rectum,stage i,t1,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,1.902296899,39,CMS2,1.0,1520
+TCGA-AG-A002,MSS,35.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,1.0,Cluster3,1.63514031,18,CMS1,1.0,638
+TCGA-AA-A00D,MSS,70.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,2.413906202,24,CMS4,1.0,578
+TCGA-CI-6623,MSS,44.0,0,rectum,stage i,t1,n0,m0,male,rectal adenocarcinoma,,Cluster4,1.933348837,15,CMS2,1.0,1443
+TCGA-AA-3549,MSS,69.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.949690698,20,,1.0,639
+TCGA-AA-3556,MSS,78.0,0,colon,stage i,t2,n0,m0,male,,0.0,CIMP-L,2.021935659,60,CMS3,1.0,700
+TCGA-A6-5656,MSS,74.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,1.525034109,5,CMS2,1.0,1001
+TCGA-AA-3866,MSI-L,78.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.886168992,15,CMS4,1.0,518
+TCGA-AA-A00R,MSI-H,64.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,1.0,CIMP-L,1.880095349,28,CMS1,1.0,30
+TCGA-F4-6856,MSI-H,45.0,0,colon,stage i,t2,n0,m0,male,colon mucinous adenocarcinoma,1.0,Cluster4,1.882030233,15,CMS3,1.0,1074
+TCGA-CK-5912,MSS,81.0,1,colon,stage i,t2,n0,mx,male,colon adenocarcinoma,0.0,Cluster3,2.104717054,15,CMS2,1.0,1493
+TCGA-D5-6530,MSI-H,53.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,,Cluster4,1.666573643,0,CMS3,1.0,621
+TCGA-AG-3580,MSS,67.0,0,rectum,stage i,t1,n0,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.687508527,10,CMS2,1.0,244
+TCGA-AA-A02Y,MSS,73.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,0.52809845,10,,1.0,1216
+TCGA-F4-6806,MSS,59.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.338893798,10,CMS3,1.0,1260
+TCGA-AZ-5407,MSS,51.0,0,colon,stage i,t1,n0,m0,female,colon adenocarcinoma,0.0,CIMP-H,1.117337984,10,CMS3,1.0,2683
+TCGA-DC-6157,MSS,48.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,Cluster4,2.308185271,15,CMS2,1.0,1581
+TCGA-AG-3882,MSS,66.0,0,rectum,stage i,t2,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,2.074674419,10,,1.0,608
+TCGA-CM-6163,MSS,74.0,0,colon,stage i,t1,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,2.849014729,15,,1.0,427
+TCGA-AG-3742,MSS,85.0,0,rectum,stage i,t1,n0,m0,female,rectal adenocarcinoma,0.0,CIMP-L,2.497776744,25,CMS2,1.0,30
+TCGA-AU-6004,MSI-H,69.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,2.628360465,20,CMS1,1.0,824
+TCGA-AD-5900,MSI-H,67.0,0,colon,stage i,t2,n0,mx,male,colon mucinous adenocarcinoma,1.0,CIMP-H,2.4877,15,CMS1,1.0,370
+TCGA-AD-6548,MSI-L,81.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,CIMP-L,2.579724031,30,,1.0,650
+TCGA-DC-6160,MSS,68.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,,Cluster4,1.831827132,10,CMS3,1.0,1339
+TCGA-AG-3890,MSS,62.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,Cluster3,2.305250388,20,CMS2,1.0,518
+TCGA-AA-A01V,MSS,59.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.096862016,35,CMS3,1.0,31
+TCGA-AA-3530,MSS,80.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,1.899736434,20,,1.0,580
+TCGA-AF-2691,MSS,48.0,0,rectum,stage i,t1,n0,m0,female,rectal adenocarcinoma,0.0,CIMP-L,2.386593023,15,,1.0,1309
+TCGA-AH-6897,MSI-L,48.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,Cluster3,1.408834884,23,CMS2,1.0,804
+TCGA-AG-3878,MSS,64.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-L,2.674034109,10,CMS4,1.0,30
+TCGA-AF-2693,MSS,75.0,0,,stage i,t2,n0,mx,male,,,Cluster4,2.194248062,10,CMS2,1.0,1155
+TCGA-AA-3968,MSS,55.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,,Cluster3,2.826952713,0,CMS4,1.0,669
+TCGA-D5-6540,MSI-H,66.0,0,colon,stage i,t2,n0,m0,male,colon mucinous adenocarcinoma,1.0,CIMP-H,2.066656589,0,CMS1,1.0,491
+TCGA-CM-5864,MSS,60.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.52584031,4,CMS2,1.0,457
+TCGA-D5-6923,MSS,57.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,,CIMP-H,3.558160465,34,,1.0,378
+TCGA-F4-6808,MSS,54.0,0,colon,stage i,t1,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,1.523878295,10,CMS2,1.0,1024
+TCGA-CM-4744,MSS,69.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-H,0.885848062,15,,1.0,609
+TCGA-AG-3896,MSS,85.0,0,rectum,stage i,t2,n0,m0,female,rectal adenocarcinoma,0.0,Cluster3,2.281110078,10,,1.0,31
+TCGA-AG-A008,MSS,50.0,0,rectum,stage i,t2,n0,m0,female,rectal mucinous adenocarcinoma,0.0,Cluster3,0.946410853,24,CMS3,1.0,424
+TCGA-AA-3821,MSI-H,81.0,0,colon,stage i,t2,n0,m0,female,colon mucinous adenocarcinoma,1.0,CIMP-H,2.490541085,10,CMS1,1.0,31
+TCGA-AA-3526,MSI-L,57.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.099343411,20,,1.0,580
+TCGA-AA-3495,MSS,79.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,,CIMP-L,1.925941085,10,CMS2,1.0,1127
+TCGA-AG-3599,MSS,70.0,0,rectum,stage i,t2,n0,m0,male,,0.0,CIMP-L,1.730662016,5,CMS3,1.0,366
+TCGA-AG-3732,MSS,78.0,0,rectum,stage i,t2,n0,m0,female,rectal adenocarcinoma,0.0,Cluster4,2.153906202,15,CMS3,1.0,1003
+TCGA-AG-A02X,MSS,77.0,0,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,CIMP-H,1.12380155,25,CMS3,1.0,1247
+TCGA-AA-3667,MSI-L,36.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,1.459412403,0,CMS2,1.0,426
+TCGA-AA-3502,MSI-L,73.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,1.038575969,20,CMS3,1.0,1065
+TCGA-AA-3858,MSS,67.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster3,2.355696899,10,CMS2,1.0,945
+TCGA-D5-7000,MSS,79.0,0,colon,stage i,t2,n0,m0,female,colon mucinous adenocarcinoma,,CIMP-H,2.611049612,10,,1.0,312
+TCGA-A6-2684,MSI-L,75.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,,Cluster4,3.067474419,10,CMS4,1.0,1127
+TCGA-AA-3543,MSI-H,84.0,0,colon,stage i,t2,n0,m0,male,colon mucinous adenocarcinoma,1.0,CIMP-H,1.992006202,38,CMS1,1.0,30
+TCGA-3L-AA1B,,61.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,,,2.720841085,40,,1.0,475
+TCGA-AZ-6599,MSS,72.0,1,colon,stage i,t2,n0,mx,male,colon adenocarcinoma,0.0,CIMP-L,0.872536434,10,CMS3,1.0,206
+TCGA-AA-3538,MSS,54.0,0,colon,stage i,t2,n0,m0,female,colon adenocarcinoma,0.0,Cluster3,2.636583721,35,CMS4,1.0,791
+TCGA-DC-6158,MSS,70.0,1,rectum,stage i,t2,n0,m0,male,rectal adenocarcinoma,0.0,Cluster4,3.880929457,20,CMS4,1.0,334
+TCGA-AD-A5EK,,51.0,0,colon,stage i,t2,n0,mx,male,colon adenocarcinoma,,,1.945730233,0,CMS2,1.0,500
+TCGA-AA-3986,MSS,73.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.198996124,3,CMS2,1.0,580
+TCGA-CK-5916,MSI-H,71.0,1,colon,stage i,t1,n0,m0,female,colon adenocarcinoma,1.0,CIMP-H,2.414586047,20,CMS1,1.0,643
+TCGA-A6-6138,MSS,61.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,CIMP-L,2.726732558,35,CMS2,1.0,685
+TCGA-CI-6624,MSS,53.0,0,rectum,stage i,t2,n0,m0,female,rectal adenocarcinoma,0.0,Cluster4,2.832314729,25,,1.0,1466
+TCGA-AA-3854,MSI-L,71.0,0,colon,stage i,t2,n0,m0,female,colon mucinous adenocarcinoma,0.0,CIMP-L,1.607489147,8,CMS3,1.0,1096
+TCGA-AY-4071,MSS,63.0,1,,stage i,t1,n0,,female,,0.0,Cluster3,2.25182093,10,CMS2,1.0,29
+TCGA-CM-6676,MSI-L,82.0,0,colon,stage i,t2,n0,m0,male,colon adenocarcinoma,0.0,Cluster4,2.641577519,20,CMS2,1.0,337
+TCGA-AA-3977,MSS,65.0,0,colon,,t2,n0,,male,colon adenocarcinoma,1.0,Cluster3,2.168127907,30,CMS1,,761
+TCGA-AZ-6603,MSS,77.0,1,colon,,t2,n1,mx,female,colon adenocarcinoma,0.0,Cluster4,2.954137984,10,CMS2,,899
+TCGA-D5-6533,MSS,68.0,0,colon,,t4b,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,2.132856589,0,CMS2,,775
+TCGA-DM-A1D8,MSS,50.0,1,colon,,t3,n1,,female,colon adenocarcinoma,0.0,CIMP-L,1.473742636,0,CMS2,,383
+TCGA-EI-6510,MSI-L,77.0,0,rectum,,t2,n0,mx,female,rectal adenocarcinoma,0.0,Cluster4,1.091937209,10,CMS3,,556
+TCGA-AD-6901,MSI-L,78.0,1,colon,,t3,n0,mx,male,colon adenocarcinoma,0.0,CIMP-L,3.240797674,45,CMS4,,682
+TCGA-AD-6964,MSI-H,58.0,1,colon,,t4a,n2b,,male,colon adenocarcinoma,1.0,Cluster4,3.110265116,50,CMS4,,331
+TCGA-AH-6547,MSS,79.0,1,rectum,,t3,n0,mx,female,rectal adenocarcinoma,,Cluster4,3.053906977,20,CMS4,,76
+TCGA-AH-6549,MSI-L,66.0,0,rectum,,t3,nx,mx,male,rectal adenocarcinoma,,Cluster4,2.697070543,15,,,532
+TCGA-EI-7004,MSS,37.0,0,rectum,,t4a,n2b,m0,female,rectal mucinous adenocarcinoma,0.0,CIMP-L,4.417099225,10,CMS4,,257
+TCGA-D5-6539,MSS,45.0,0,colon,,t3,n0,m0,female,colon adenocarcinoma,0.0,Cluster4,2.02491938,0,CMS3,,380
+TCGA-CL-4957,MSS,79.0,1,rectum,,t3,n1,m0,female,rectal adenocarcinoma,0.0,Cluster4,2.032620155,20,CMS2,,0
+TCGA-AD-6890,MSS,65.0,0,colon,,t1,n0,mx,male,colon adenocarcinoma,0.0,CIMP-H,2.115696899,10,CMS2,,746
+TCGA-AH-6644,MSI-L,73.0,0,rectum,,t3,nx,mx,male,rectal adenocarcinoma,0.0,Cluster4,3.260665116,25,CMS4,,838
+TCGA-AD-6963,MSS,58.0,0,colon,,t3,n0,mx,male,colon adenocarcinoma,,Cluster4,1.657535659,25,CMS2,,834
+TCGA-AH-6544,MSS,60.0,0,rectum,,t3,n1,m1,male,rectal adenocarcinoma,0.0,Cluster4,1.185293798,22,CMS3,,1173
