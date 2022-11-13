@@ -12,13 +12,12 @@ from src.models.resnet50 import ResNet50
 
 def train_model(
     model: pl.LightningModule,
-    data_path: str,
+    dataset: PatchDataset,
     saved_models_path: str,
     train_batch_size: int = 32,
     val_batch_size: int = 64,
     max_epochs: int = 10,
 ) -> pl.LightningModule:
-    dataset = PatchDataset(data_path)
     train_ds, val_ds = random_split(
         dataset=dataset,
         lengths=[int(0.8 * len(dataset)), len(dataset) - int(0.8 * len(dataset))],
@@ -27,7 +26,7 @@ def train_model(
     val_loader = DataLoader(val_ds, batch_size=val_batch_size, shuffle=False)
 
     if saved_models_path is None:
-        raise ValueError('saved_models_path is a required argument')
+        raise ValueError("saved_models_path is a required argument")
 
     use_gpu = torch.cuda.is_available()
 

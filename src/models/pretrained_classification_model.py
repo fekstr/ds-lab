@@ -36,22 +36,12 @@ class ImgClassificationModel(pl.LightningModule):
         self.model_name = model_name
         self.update_output_dim(num_classes)
         self.hyperparams = hyperparams
-
-    def update_output_dim(self, new_num_classes):
-        if self.model_name == "vgg19":
-            fc_in_features = self.model.classifier[-1].in_features
-            self.model.classifier[-1] = nn.Linear(fc_in_features, new_num_classes)
-        elif self.model_name == "resnet50":
-            fc_in_features = self.model.fc.in_features
-            self.model.fc = nn.Linear(fc_in_features, new_num_classes)
-        elif self.model_name == "efficientnet_b0":
-            fc_in_features = self.model.classifier[-1].in_features
-            self.model.classifier[-1] = nn.Linear(fc_in_features, new_num_classes)
+        self.class_weights = None
 
     def training_step(self, batch: tuple, batch_idx: Union[int, list, None]) -> None:
         imgs, labels = batch
         y_hat = self.model(imgs)
-        loss = nn.functional.cross_entropy(y_hat, labels)
+        loss = nn.functional.cross_entropy(y_hat, labels, weight=self.class_weights)
         self.log("train_loss", loss)
 
         return loss
@@ -87,3 +77,18 @@ class ImgClassificationModel(pl.LightningModule):
             weight_decay=self.hyperparams["weight_decay"],
         )
         return optimizer
+
+    # Custom methods
+    def update_output_dim(self, new_num_classes):
+        if self.model_name == "vgg19":
+            fc_in_features = self.model.classifier[-1].in_features
+            self.model.classifier[-1] = nn.Linear(fc_in_features, new_num_classes)
+        elif self.model_name == "resnet50":
+            fc_in_features = self.model.fc.in_features
+            self.model.fc = nn.Linear(fc_in_features, new_num_classes)
+        elif self.model_name == "efficientnet_b0":
+            fc_in_features = self.model.classifier[-1].in_features
+            self.model.classifier[-1] = nn.Linear(fc_in_features, new_num_classes)
+
+    def set_class_weights(self, class_weights):
+        self.class_weights = class_weights

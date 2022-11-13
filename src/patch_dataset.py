@@ -1,4 +1,5 @@
 import pathlib
+import os
 from typing import Tuple
 from PIL import Image
 from torch import Tensor
@@ -35,6 +36,18 @@ class PatchDataset(Dataset):
         for i, class_path in enumerate(self.class_paths):
             self.classes_map[class_path.name] = i
             self.imgs_paths += list(class_path.iterdir())
+
+        class_counts = {}
+        for cl in self.classes_map.keys():
+            cl_path = os.path.join(dataset_path, cl)
+            count = len(os.listdir(cl_path))
+            class_counts[cl] = count
+
+        n_samples = len(self.imgs_paths)
+        self.class_weights = [1 - count / n_samples for count in class_counts.values()]
+        self.class_weights = torch.tensor(
+            self.class_weights, device="cuda" if torch.cuda.is_available() else "cpu"
+        )
 
     def __len__(self):
         return len(self.imgs_paths)
