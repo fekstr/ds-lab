@@ -40,7 +40,7 @@ ds-lab
 ## Trained models
 
 [EfficientNet B0](https://polybox.ethz.ch/index.php/s/asyU2O8VKnxi6gd/download)
-[EfficientNet B0 (tuned on PATH dataset)](https://polybox.ethz.ch/index.php/s/eiJLYYNJvEPZwQq/download)
+[EfficientNet B0 (tuned on PATH dataset)](https://polybox.ethz.ch/index.php/s/nX0SVRoob5X5uR0)
 
 ## Segmentation Results
 
