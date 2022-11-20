@@ -57,6 +57,7 @@ level = 0
 image = slide.read_region(
                     (0, 0), level, slide.level_dimensions[level]
                 )
+del slide
 print('Done reading image')
 downsampleFactor = 2
 
