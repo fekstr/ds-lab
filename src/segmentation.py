@@ -29,7 +29,7 @@ class Segmentation:
         """
 
         self.__fun = self.__pytorch_model
-        self.model = ImgClassificationModel.load_from_checkpoint(fun_checkpoint)
+        self.model = ImgClassificationModel.load_from_checkpoint(fun_checkpoint, num_classes = NUM_CLASSES)
         self.model.freeze()
 
         self.padding = padding
@@ -76,14 +76,12 @@ class Segmentation:
     def segment_PATH(
         self, folder_location: str, save_location: str
     ):
-        Image.MAX_IMAGE_PIXELS = 1000000000 
         for ind, filename in enumerate(os.listdir(folder_location)):
             if filename.split(".")[-1] == "svs":
                 print("image ", ind)
 
                 slide = openslide.OpenSlide(folder_location + "/" + filename)
-                print(slide.level_dimensions[3])
-                self.images = [slide.read_region((0, 0),3, slide.level_dimensions[3]).convert("RGB")]
+                self.images = [slide.read_region((0, 0), 1, slide.level_dimensions[1]).convert("RGB")]
                 del slide
                 self.__segmentation_only_sequence()
 
