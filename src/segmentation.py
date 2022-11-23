@@ -250,6 +250,6 @@ if __name__ == "__main__":
     
     if NUM_CLASSES == 5:
         segment = Segmentation(
-            fun_checkpoint="version_2648177/checkpoints/last.ckpt",
+            fun_checkpoint="/cluster/scratch/kkapusniak/version_2648177/checkpoints/last.ckpt",
         )
-        segment.segment_PATH(folder_location="./WSS2-v1/test", save_location="./")
+        segment.segment_PATH(folder_location="/cluster/scratch/kkapusniak/WSS2-v1/test", save_location="/cluster/scratch/kkapusniak/")
