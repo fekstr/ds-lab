@@ -2,6 +2,7 @@ import pytorch_lightning as pl
 
 from src.utils import train_model
 from src.models.pretrained_classification_model import ImgClassificationModel
+from src.patch_dataset import PatchDataset
 
 pl.seed_everything(42)
 
@@ -20,14 +21,21 @@ if __name__ == "__main__":
     parser.add_argument("--weight-decay", type=float)
     args = parser.parse_args()
 
+    dataset = PatchDataset(args.data_path)
+    model = ImgClassificationModel(
+        model_name=args.model_name,
+        num_classes=args.num_classes,
+        hyperparams={
+            "learning_rate": args.lr,
+            "momentum": args.momentum,
+            "weight_decay": args.weight_decay,
+        },
+    )
+
     trained_model = train_model(
-        ImgClassificationModel(
-            model_name=args.model_name,
-            num_classes=args.num_classes,
-            hyperparams={"learning_rate": args.lr, "momentum": args.momentum, "weight_decay": args.weight_decay},
-        ),
+        model=model,
+        dataset=dataset,
         train_batch_size=args.train_batch_size,
         val_batch_size=args.val_batch_size,
-        data_path=args.data_path,
         saved_models_path=args.saved_models_path,
     )

@@ -1,8 +1,8 @@
-from tkinter import Y
 import math
 from pathlib import Path
-from tqdm import tqdm
+import os
 
+from tqdm import tqdm
 import PIL
 
 # The path can also be read from a config file, etc.
@@ -27,6 +27,21 @@ CHANGE_MPP = False
 TARGET_MPP = 0.5
 SOURCE_MPP_DEFAULT = 0.50149999999999995
 TARGET_DIM = 1500
+
+
+def filter_shape(data_path, shape):
+    to_delete = []
+    classes = os.listdir(data_path)
+    for cl in classes:
+        path = os.path.join(data_path, cl)
+        for name in tqdm(os.listdir(path)):
+            p = os.path.join(path, name)
+            img = PIL.Image.open(p)
+            if img.size != shape:
+                to_delete.append(p)
+
+    for path in to_delete:
+        os.remove(path)
 
 
 class PreprocessingSVS:
@@ -59,7 +74,6 @@ class PreprocessingSVS:
                     (0, 0), 0, slide.level_dimensions[0]
                 ).convert("RGB")
                 del slide
-
 
         else:
             self.if_svs = False
@@ -112,10 +126,12 @@ if __name__ == "__main__":
     ## 224x224 image preprocessing (Frithiof)
     parser = argparse.ArgumentParser()
     parser.add_argument("--type")
+    parser.add_argument("--src")
+    parser.add_argument("--dest")
     args = parser.parse_args()
 
-    data_path = os.path.join("data", "NCT-CRC-HE-100K-NONORM")
-    target_path = os.path.join("data", "100K-PROCESSED")
+    data_path = args.src
+    target_path = args.dest
 
     c = args.type
     class_path = os.path.join(data_path, c)
@@ -128,5 +144,5 @@ if __name__ == "__main__":
             continue
         Path(target_class_path).mkdir(parents=True, exist_ok=True)
         preprocess = PreprocessingSVS(img_path, target_path=target_img_path)
-        preprocess.normalise(target_path="code/preprocess_images/Ref.png")
+        preprocess.normalise(target_path="src/preprocess_images/Ref.png")
         preprocess.save()
