@@ -1,18 +1,19 @@
 import os
 import math
 from PIL import Image
+import openslide
 import numpy as np
 import pandas as pd
 from collections import defaultdict
 import torch
 from torchvision.transforms import Normalize, ToTensor
 
-from src.models.pretrained_classification_model import ImgClassificationModel
+from models.pretrained_classification_model import ImgClassificationModel
 
-BATCH_SIZE = 64
+BATCH_SIZE = 32
 CLASSIFIER_WIDTH = 224
 CLASSIFIER_HEIGHT = 224
-NUM_CLASSES = 9
+NUM_CLASSES = 5
 
 
 class Segmentation:
@@ -72,10 +73,32 @@ class Segmentation:
             "TCGA_probabilities_per_image.csv", float_format="%.18f"
         )
 
+    def segment_PATH(
+        self, folder_location: str, save_location: str
+    ):
+        Image.MAX_IMAGE_PIXELS = 1000000000 
+        for ind, filename in enumerate(os.listdir(folder_location)):
+            if filename.split(".")[-1] == "svs":
+                print("image ", ind)
+
+                slide = openslide.OpenSlide(folder_location + "/" + filename)
+                print(slide.level_dimensions[3])
+                self.images = [slide.read_region((0, 0),3, slide.level_dimensions[3]).convert("RGB")]
+                del slide
+                self.__segmentation_only_sequence()
+
+                with open(save_location + '/' + filename.split(".")[0] + '_segmentation_map.npy', 'wb') as f:
+                    np.save(f, self.segmentation_matrices[0])
+
     def __probabilities_only_sequence(self):
         self.__preprocess()
         self.__segment()
         self.__get_probabilities()
+
+    def __segmentation_only_sequence(self):
+        self.__preprocess()
+        self.__segment()
+        self.__assemble_segments()
 
     def __preprocess(self) -> None:
         """SET Channel first and add padding for each image"""
@@ -106,7 +129,7 @@ class Segmentation:
                 np.array(image),
                 [
                     (self.padding_width[ind], self.padding_width[ind]),
-                    (self.padding_width[ind], self.padding_hight[ind]),
+                    (self.padding_hight[ind], self.padding_hight[ind]),
                     (0, 0),
                 ],
                 mode="constant",
@@ -221,7 +244,11 @@ class Segmentation:
 
 
 if __name__ == "__main__":
+    #segment = Segmentation(
+    #    fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt",
+    #)
+    #segment.create_TCGA_spreadsheet(folder_location="./TCGA_processed")
     segment = Segmentation(
-        fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt",
+        fun_checkpoint="version_2648177/checkpoints/last.ckpt",
     )
-    segment.create_TCGA_spreadsheet(folder_location="./TCGA_processed")
+    segment.segment_PATH(folder_location="./WSS2-v1/test", save_location="./")
