@@ -39,11 +39,13 @@ ds-lab
 
 ### Normalized patches
 [PATH-DT-MSU-TRAIN](https://polybox.ethz.ch/index.php/s/hzLxnW3Lb64V7UA/download)
+
 [PATH-DT-MSU-TEST](https://polybox.ethz.ch/index.php/s/GOl8C9ONgDdxvBr/download)
 
 ## Trained models
 
 [EfficientNet B0](https://polybox.ethz.ch/index.php/s/asyU2O8VKnxi6gd/download)
+
 [EfficientNet B0 (tuned on PATH dataset)](https://polybox.ethz.ch/index.php/s/nX0SVRoob5X5uR0)
 
 ## Segmentation Results
