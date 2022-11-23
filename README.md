@@ -37,6 +37,10 @@ ds-lab
 
 [Processed slides](https://polybox.ethz.ch/index.php/s/Q4joLEkT8HepwWl)
 
+### Normalized patches
+[PATH-DT-MSU-TRAIN](https://polybox.ethz.ch/index.php/s/hzLxnW3Lb64V7UA/download)
+[PATH-DT-MSU-TEST](https://polybox.ethz.ch/index.php/s/GOl8C9ONgDdxvBr/download)
+
 ## Trained models
 
 [EfficientNet B0](https://polybox.ethz.ch/index.php/s/asyU2O8VKnxi6gd/download)
