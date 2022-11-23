@@ -244,11 +244,14 @@ class Segmentation:
 
 
 if __name__ == "__main__":
-    #segment = Segmentation(
-    #    fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt",
-    #)
-    #segment.create_TCGA_spreadsheet(folder_location="./TCGA_processed")
-    segment = Segmentation(
-        fun_checkpoint="version_2648177/checkpoints/last.ckpt",
-    )
-    segment.segment_PATH(folder_location="./WSS2-v1/test", save_location="./")
+    if NUM_CLASSES == 9:
+        segment = Segmentation(
+            fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt",
+        )
+        segment.create_TCGA_spreadsheet(folder_location="./TCGA_processed")
+    
+    if NUM_CLASSES == 5:
+        segment = Segmentation(
+            fun_checkpoint="version_2648177/checkpoints/last.ckpt",
+        )
+        segment.segment_PATH(folder_location="./WSS2-v1/test", save_location="./")
