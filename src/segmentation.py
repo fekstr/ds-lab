@@ -90,7 +90,8 @@ class Segmentation:
                 ).convert("RGB")
                 del slide
                 preprocess.image_dim = preprocess.image.size
-                preprocess.normalise()
+                preprocess.normalise(target_path="/cluster/scratch/kkapusniak/Ref.png")
+                print("Normalisation done")
 
                 self.images = [preprocess.image]
                 self.__segmentation_only_sequence()
@@ -99,6 +100,8 @@ class Segmentation:
                     save_location
                     + "/"
                     + filename.split(".")[0]
+                    + "_"
+                    + self.stride
                     + "_segmentation_map.npy",
                     "wb",
                 ) as f:

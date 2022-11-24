@@ -52,7 +52,7 @@ class PreprocessingSVS:
                 "Prepocessing without file, manually set self.image and self.image_dim"
             )
             return
-            
+
         self.image_path = image_path
         if not target_path:
             self.target_path = image_path.split(".")[0] + "_processed.tif"
