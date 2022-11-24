@@ -54,7 +54,7 @@ class Segmentation:
             self.torch_normaliser = torchstain.normalizers.MacenkoNormalizer(
                 backend="torch"
             )
-            target = PIL.Image.open(target_path="/cluster/scratch/kkapusniak/Ref.png")
+            target = PIL.Image.open("/cluster/scratch/kkapusniak/Ref.png")
             self.torch_normaliser.fit(self.T(target))
 
     def create_TCGA_spreadsheet(
