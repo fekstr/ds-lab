@@ -267,6 +267,8 @@ class Segmentation:
             images.shape[0], images.shape[3], images.shape[1], images.shape[2]
         )
         for ind, image in enumerate(images):
+            print('what')
+            print(ind)
             if self.macenko_normalise:
                 try:
                     norm, _, _ = self.torch_normaliser.normalize(
