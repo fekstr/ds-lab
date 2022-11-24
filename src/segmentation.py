@@ -9,6 +9,7 @@ import torch
 from torchvision.transforms import Normalize, ToTensor
 
 from models.pretrained_classification_model import ImgClassificationModel
+from preprocess_images.preprocess_image import PreprocessingSVS
 
 BATCH_SIZE = 32
 CLASSIFIER_WIDTH = 224
@@ -77,12 +78,19 @@ class Segmentation:
         self, folder_location: str, save_location: str
     ):
         for ind, filename in enumerate(os.listdir(folder_location)):
+            
             if filename.split(".")[-1] == "svs":
                 print("image ", ind)
 
                 slide = openslide.OpenSlide(folder_location + "/" + filename)
-                self.images = [slide.read_region((0, 0), 1, slide.level_dimensions[1]).convert("RGB")]
+                
+                preprocess = PreprocessingSVS()
+                preprocess.image = slide.read_region((0, 0), 1, slide.level_dimensions[1]).convert("RGB")
                 del slide
+                preprocess.image_dim = preprocess.image.size
+                preprocess.normalise()
+
+                self.images = [preprocess.image]
                 self.__segmentation_only_sequence()
 
                 with open(save_location + '/' + filename.split(".")[0] + '_segmentation_map.npy', 'wb') as f:
