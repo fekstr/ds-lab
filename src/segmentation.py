@@ -30,7 +30,9 @@ class Segmentation:
         """
 
         self.__fun = self.__pytorch_model
-        self.model = ImgClassificationModel.load_from_checkpoint(fun_checkpoint, num_classes = NUM_CLASSES)
+        self.model = ImgClassificationModel.load_from_checkpoint(
+            fun_checkpoint, num_classes=NUM_CLASSES
+        )
         self.model.freeze()
 
         self.padding = padding
@@ -74,18 +76,18 @@ class Segmentation:
             "TCGA_probabilities_per_image.csv", float_format="%.18f"
         )
 
-    def segment_PATH(
-        self, folder_location: str, save_location: str
-    ):
+    def segment_PATH(self, folder_location: str, save_location: str):
         for ind, filename in enumerate(os.listdir(folder_location)):
-            
+
             if filename.split(".")[-1] == "svs":
                 print("image ", ind)
 
                 slide = openslide.OpenSlide(folder_location + "/" + filename)
-                
+
                 preprocess = PreprocessingSVS()
-                preprocess.image = slide.read_region((0, 0), 1, slide.level_dimensions[1]).convert("RGB")
+                preprocess.image = slide.read_region(
+                    (0, 0), 1, slide.level_dimensions[1]
+                ).convert("RGB")
                 del slide
                 preprocess.image_dim = preprocess.image.size
                 preprocess.normalise()
@@ -93,7 +95,13 @@ class Segmentation:
                 self.images = [preprocess.image]
                 self.__segmentation_only_sequence()
 
-                with open(save_location + '/' + filename.split(".")[0] + '_segmentation_map.npy', 'wb') as f:
+                with open(
+                    save_location
+                    + "/"
+                    + filename.split(".")[0]
+                    + "_segmentation_map.npy",
+                    "wb",
+                ) as f:
                     np.save(f, self.segmentation_matrices[0])
 
     def __probabilities_only_sequence(self):
@@ -255,9 +263,12 @@ if __name__ == "__main__":
             fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt",
         )
         segment.create_TCGA_spreadsheet(folder_location="./TCGA_processed")
-    
+
     if NUM_CLASSES == 5:
         segment = Segmentation(
             fun_checkpoint="/cluster/scratch/kkapusniak/version_2648177/checkpoints/last.ckpt",
         )
-        segment.segment_PATH(folder_location="/cluster/scratch/kkapusniak/WSS2-v1/test", save_location="/cluster/scratch/kkapusniak/")
+        segment.segment_PATH(
+            folder_location="/cluster/scratch/kkapusniak/WSS2-v1/test",
+            save_location="/cluster/scratch/kkapusniak/",
+        )

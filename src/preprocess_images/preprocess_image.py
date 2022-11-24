@@ -45,19 +45,20 @@ def filter_shape(data_path, shape):
 
 
 class PreprocessingSVS:
-    def __init__(self, image_path = None, target_path = None) -> None:
+    def __init__(self, image_path=None, target_path=None) -> None:
         self.image_path = image_path
         if not target_path:
             self.target_path = image_path.split(".")[0] + "_processed.tif"
         else:
             self.target_path = target_path
 
-        
         if not image_path:
             self.if_svs = False
-            print('Prepocessing without file, manually set self.image and self.image_dim')
+            print(
+                "Prepocessing without file, manually set self.image and self.image_dim"
+            )
 
-        elif image_path.split(".")[-1] == "svs": # read slide
+        elif image_path.split(".")[-1] == "svs":  # read slide
             self.if_svs = True
             slide = openslide.OpenSlide(image_path)
 
