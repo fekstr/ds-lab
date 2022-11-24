@@ -270,13 +270,13 @@ class Segmentation:
             if self.macenko_normalise:
                 try:
                     norm, _, _ = self.torch_normaliser.normalize(
-                        I=self.T(self.image), stains=True
+                        I=self.T(image), stains=True
                     )
                     image = np.uint8(norm.numpy())
                 except:
                     print("WARNING: Normalisation skipped")
                     norm, _, _ = self.torch_normaliser.normalize(
-                        I=self.T(self.image), stains=True
+                        I=self.T(image), stains=True
                     )
                     image = np.uint8(norm.numpy())
 
