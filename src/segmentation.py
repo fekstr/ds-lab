@@ -275,6 +275,10 @@ class Segmentation:
                     image = np.uint8(norm.numpy())
                 except:
                     print("WARNING: Normalisation skipped")
+                    norm, _, _ = self.torch_normaliser.normalize(
+                        I=self.T(self.image), stains=True
+                    )
+                    image = np.uint8(norm.numpy())
 
             test_dataset[ind] = ToTensor()(image.astype(np.uint8))
         normaliser(test_dataset)
