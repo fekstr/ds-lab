@@ -1,4 +1,5 @@
 from typing import Union, Literal
+import warnings
 
 import pytorch_lightning as pl
 from torchvision.models import (
@@ -33,12 +34,21 @@ class ImgClassificationModel(pl.LightningModule):
         super().__init__()
         self.save_hyperparameters()
 
-        if model_name == "vgg19":
-            self.model = vgg19(VGG19_Weights.DEFAULT)
-        elif model_name == "resnet50":
-            self.model = resnet50(ResNet50_Weights.DEFAULT)
-        elif model_name == "efficientnet_b0":
-            self.model = efficientnet_b0(EfficientNet_B0_Weights.DEFAULT)
+        try:
+            if model_name == "vgg19":
+                self.model = vgg19(VGG19_Weights.DEFAULT)
+            elif model_name == "resnet50":
+                self.model = resnet50(ResNet50_Weights.DEFAULT)
+            elif model_name == "efficientnet_b0":
+                self.model = efficientnet_b0(EfficientNet_B0_Weights.DEFAULT)
+        except:
+            warnings.warn("Failed to load torch default weights")
+            if model_name == "vgg19":
+                self.model = vgg19()
+            elif model_name == "resnet50":
+                self.model = resnet50()
+            elif model_name == "efficientnet_b0":
+                self.model = efficientnet_b0()
 
         self.model_name = model_name
         self.update_output_dim(num_classes)
