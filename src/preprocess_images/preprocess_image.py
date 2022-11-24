@@ -113,7 +113,7 @@ class PreprocessingSVS:
             norm, _, _ = torch_normaliser.normalize(I=T(self.image), stains=True)
             self.image = PIL.Image.fromarray(np.uint8(norm.numpy())).convert("RGB")
         except:
-            print("WARNING: Normalisation skipped for Image ", self.image_path)
+            print("WARNING: Normalisation skipped for Image")
 
     def save(self) -> None:
         self.image.save(self.target_path)

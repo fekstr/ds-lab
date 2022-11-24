@@ -7,6 +7,9 @@ import pandas as pd
 from collections import defaultdict
 import torch
 from torchvision.transforms import Normalize, ToTensor
+from torchvision import transforms
+import torchstain
+import PIL
 
 from models.pretrained_classification_model import ImgClassificationModel
 from preprocess_images.preprocess_image import PreprocessingSVS
@@ -19,7 +22,11 @@ NUM_CLASSES = 5
 
 class Segmentation:
     def __init__(
-        self, fun_checkpoint=None, padding="keep_last_window", stride=CLASSIFIER_WIDTH
+        self,
+        fun_checkpoint=None,
+        padding="keep_last_window",
+        stride=CLASSIFIER_WIDTH,
+        normalise=False,
     ) -> None:
         """Initialise segmentation
 
@@ -37,6 +44,18 @@ class Segmentation:
 
         self.padding = padding
         self.stride = stride
+
+        self.macenko_normalise = normalise
+
+        if self.macenko_normalise:
+            self.T = transforms.Compose(
+                [transforms.ToTensor(), transforms.Lambda(lambda x: x * 255)]
+            )
+            self.torch_normaliser = torchstain.normalizers.MacenkoNormalizer(
+                backend="torch"
+            )
+            target = PIL.Image.open(target_path="/cluster/scratch/kkapusniak/Ref.png")
+            self.torch_normaliser.fit(self.T(target))
 
     def create_TCGA_spreadsheet(
         self, folder_location: str, buffer_frequency=20, checkpoint_frequency=100
@@ -84,16 +103,12 @@ class Segmentation:
 
                 slide = openslide.OpenSlide(folder_location + "/" + filename)
 
-                preprocess = PreprocessingSVS()
-                preprocess.image = slide.read_region(
-                    (0, 0), 1, slide.level_dimensions[1]
-                ).convert("RGB")
+                self.images = [
+                    slide.read_region((0, 0), 1, slide.level_dimensions[1]).convert(
+                        "RGB"
+                    )
+                ]
                 del slide
-                preprocess.image_dim = preprocess.image.size
-                preprocess.normalise(target_path="/cluster/scratch/kkapusniak/Ref.png")
-                print("Normalisation done")
-
-                self.images = [preprocess.image]
                 self.__segmentation_only_sequence()
 
                 with open(
@@ -114,7 +129,7 @@ class Segmentation:
 
     def __segmentation_only_sequence(self):
         self.__preprocess()
-        self.__segment()
+        self.__segment(normalise=True)
         self.__assemble_segments()
 
     def __preprocess(self) -> None:
@@ -152,7 +167,7 @@ class Segmentation:
                 mode="constant",
             )
 
-    def __segment(self) -> None:
+    def __segment(self, normalise=False) -> None:
         """Segments images into segments and pass them to classifier, grouped into batches of BATCH_SIZE"""
 
         image_buffer = np.zeros(
@@ -252,6 +267,15 @@ class Segmentation:
             images.shape[0], images.shape[3], images.shape[1], images.shape[2]
         )
         for ind, image in enumerate(images):
+            if self.macenko_normalise:
+                try:
+                    norm, _, _ = self.torch_normaliser.normalize(
+                        I=self.T(self.image), stains=True
+                    )
+                    image = np.uint8(norm.numpy())
+                except:
+                    print("WARNING: Normalisation skipped")
+
             test_dataset[ind] = ToTensor()(image.astype(np.uint8))
         normaliser(test_dataset)
 
@@ -270,6 +294,7 @@ if __name__ == "__main__":
     if NUM_CLASSES == 5:
         segment = Segmentation(
             fun_checkpoint="/cluster/scratch/kkapusniak/version_2648177/checkpoints/last.ckpt",
+            normalise=True,
         )
         segment.segment_PATH(
             folder_location="/cluster/scratch/kkapusniak/WSS2-v1/test",
