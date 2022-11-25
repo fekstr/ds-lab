@@ -143,12 +143,12 @@ class Segmentation:
             if self.padding == "keep_last_window":
                 self.padding_width.append(
                     math.ceil(
-                        (CLASSIFIER_WIDTH - image.shape[0] % CLASSIFIER_WIDTH) / 2
+                        ((CLASSIFIER_WIDTH - image.shape[0]) % CLASSIFIER_WIDTH) / 2
                     )
                 )
                 self.padding_hight.append(
                     math.ceil(
-                        (CLASSIFIER_WIDTH - image.shape[1] % CLASSIFIER_WIDTH) / 2
+                        ((CLASSIFIER_WIDTH - image.shape[1]) % CLASSIFIER_WIDTH) / 2
                     )
                 )
             else:
@@ -218,9 +218,9 @@ class Segmentation:
                             (BATCH_SIZE, CLASSIFIER_WIDTH, CLASSIFIER_HEIGHT, 3),
                             dtype=np.uint8,
                         )
-                        buffer_indices = list()
+                        buffer_indices = []
 
-        if image_buffer != []:
+        if buffer_indices:
             print("Last Batch")
             classes = self.__fun(image_buffer)
             for ind in range(len(buffer_indices)):
