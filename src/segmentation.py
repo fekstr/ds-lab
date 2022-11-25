@@ -184,8 +184,8 @@ class Segmentation:
 
         for i, image in enumerate(self.images):
             (width, height, _) = self.images[i].shape
-            self.width_n_steps[i] = int((width + 2*self.padding_width[i] - CLASSIFIER_WIDTH) / self.stride) + 1
-            self.height_n_steps[i] = int((height + 2*self.padding_hight[i] - CLASSIFIER_HEIGHT) / self.stride) + 1
+            self.width_n_steps[i] = int((width - CLASSIFIER_WIDTH) / self.stride) + 1
+            self.height_n_steps[i] = int((height - CLASSIFIER_HEIGHT) / self.stride) + 1
             approx_num_of_batches = (
                 len(self.images)
                 * (self.width_n_steps[i] * self.height_n_steps[i])
