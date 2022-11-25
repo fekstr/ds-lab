@@ -166,7 +166,7 @@ class Segmentation:
                 mode="constant",
             )
 
-    def __segment(self, normalise=False) -> None:
+    def __segment(self) -> None:
         """Segments images into segments and pass them to classifier, grouped into batches of BATCH_SIZE"""
 
         image_buffer = np.zeros(
@@ -181,8 +181,8 @@ class Segmentation:
 
         for i, image in enumerate(self.images):
             (width, height, _) = self.images[i].shape
-            self.width_n_steps[i] = int((width + self.padding_width[i]) / self.stride)
-            self.height_n_steps[i] = int((height + self.padding_hight[i]) / self.stride)
+            self.width_n_steps[i] = int((width + 2*self.padding_width[i] - CLASSIFIER_WIDTH) / self.stride) + 1
+            self.height_n_steps[i] = int((height + 2*self.padding_hight[i] - CLASSIFIER_HEIGHT) / self.stride) + 1
             approx_num_of_batches = (
                 len(self.images)
                 * (self.width_n_steps[i] * self.height_n_steps[i])
