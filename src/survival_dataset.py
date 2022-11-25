@@ -20,15 +20,14 @@ class SurvivalDataset(Dataset):
     def __init__(
         self,
         df: pd.DataFrame,
-        patient_slide_map_path: str,
+        patient_slide_map: dict,
         transform=ResNet50_Weights.DEFAULT.transforms(),
         augmentation=True,
     ) -> None:
         self.event_indicator = df["vital_status"].to_numpy()
         self.days_to_event = df["days_to_event"].to_numpy()
         self.patient_ids = df["ID"].to_numpy()
-        with open(patient_slide_map_path, "rb") as f:
-            self.patient_slide_map = pickle.load(f)
+        self.patient_slide_map = patient_slide_map
 
         self.transform = transform
 
@@ -40,7 +39,7 @@ class SurvivalDataset(Dataset):
             self.augmentation = None
 
     def __len__(self):
-        return len(self.img_paths)
+        return len(self.patient_ids)
 
     def __getitem__(self, idx) -> Tuple[Tensor, Tensor, Tensor]:
 
@@ -52,6 +51,7 @@ class SurvivalDataset(Dataset):
         image = ToTensor()(image)
         assert image.shape == torch.Size([3, 1500, 1500])
         if self.transform:
+            # TODO: update transform to use full image
             image = self.transform(image)
 
         if self.augmentation:
