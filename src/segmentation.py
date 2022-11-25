@@ -132,6 +132,7 @@ class Segmentation:
         self.__assemble_segments()
 
     def __preprocess(self) -> None:
+        print(self.images[0].shape)
         """SET Channel first and add padding for each image"""
         for ind, image in enumerate(self.images):
             self.images[ind] = np.array(image)
@@ -193,9 +194,9 @@ class Segmentation:
             for j in range(self.width_n_steps[i]):
                 for k in range(self.height_n_steps[i]):
                     buffer_indices.append(i)
-
-                    print(j * self.stride)
-                    print(j * self.stride + CLASSIFIER_WIDTH)
+                    print(self.width_n_steps[i], self.height_n_steps[i])
+                    print(k * self.stride)
+                    print(k * self.stride + CLASSIFIER_WIDTH)
 
                     image_buffer[len(buffer_indices) - 1] = image[
                         j * self.stride : j * self.stride + CLASSIFIER_WIDTH,
