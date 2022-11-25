@@ -165,6 +165,7 @@ class Segmentation:
                 ],
                 mode="constant",
             )
+            print(self.padding_width[ind], self.padding_hight[ind])
 
     def __segment(self) -> None:
         """Segments images into segments and pass them to classifier, grouped into batches of BATCH_SIZE"""
@@ -192,6 +193,9 @@ class Segmentation:
             for j in range(self.width_n_steps[i]):
                 for k in range(self.height_n_steps[i]):
                     buffer_indices.append(i)
+
+                    print(j * self.stride)
+                    print(j * self.stride + CLASSIFIER_WIDTH)
 
                     image_buffer[len(buffer_indices) - 1] = image[
                         j * self.stride : j * self.stride + CLASSIFIER_WIDTH,
