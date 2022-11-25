@@ -12,7 +12,6 @@ import torchstain
 import PIL
 
 from models.pretrained_classification_model import ImgClassificationModel
-from preprocess_images.preprocess_image import PreprocessingSVS
 
 BATCH_SIZE = 32
 CLASSIFIER_WIDTH = 224
@@ -116,7 +115,7 @@ class Segmentation:
                     + "/"
                     + filename.split(".")[0]
                     + "_"
-                    + self.stride
+                    + str(self.stride)
                     + "_segmentation_map.npy",
                     "wb",
                 ) as f:
