@@ -293,7 +293,7 @@ if __name__ == "__main__":
     if NUM_CLASSES == 5:
         segment = Segmentation(
             fun_checkpoint="/cluster/scratch/kkapusniak/version_2648177/checkpoints/last.ckpt",
-            stride=112,
+            stride=28,
             normalise=True,
         )
         segment.segment_PATH(
