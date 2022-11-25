@@ -128,7 +128,7 @@ class Segmentation:
 
     def __segmentation_only_sequence(self):
         self.__preprocess()
-        self.__segment(normalise=True)
+        self.__segment()
         self.__assemble_segments()
 
     def __preprocess(self) -> None:
