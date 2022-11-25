@@ -132,10 +132,11 @@ class Segmentation:
         self.__assemble_segments()
 
     def __preprocess(self) -> None:
-        print(self.images[0].shape)
         """SET Channel first and add padding for each image"""
         for ind, image in enumerate(self.images):
             self.images[ind] = np.array(image)
+
+        print(self.images[0].shape)
 
         self.padding_width = list()
         self.padding_hight = list()
