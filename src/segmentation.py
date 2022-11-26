@@ -241,7 +241,6 @@ class Segmentation:
             )
             for j in range(self.width_n_steps[key]):
                 for k in range(self.height_n_steps[key]):
-                    print(value[j*self.height_n_steps[key]+k])
                     probabilities[
                         j * self.stride : j * self.stride + CLASSIFIER_WIDTH,
                         k * self.stride : k * self.stride + CLASSIFIER_HEIGHT,
