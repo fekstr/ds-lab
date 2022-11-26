@@ -4,6 +4,7 @@
 #SBATCH --gpus=1
 #SBATCH --time=12:00:00
 #SBATCH --mem-per-cpu=2048
+#SBATCH --output=slurm_logs/slurm-%j.out
 
 python -m scripts.tune_model \
 --checkpoint-path scratch/saved_models/lightning_logs/version_1884922/checkpoints/epoch=9-step=3130.ckpt \
