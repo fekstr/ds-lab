@@ -1,4 +1,5 @@
 import os
+import argparse
 import math
 from PIL import Image
 import openslide
@@ -110,16 +111,13 @@ class Segmentation:
                 del slide
                 self.__segmentation_only_sequence()
 
-                with open(
-                    save_location
+                np.save(save_location
                     + "/"
                     + filename.split(".")[0]
                     + "_"
                     + str(self.stride)
                     + "_segmentation_map.npy",
-                    "wb",
-                ) as f:
-                    np.save(f, self.segmentation_matrices[0])
+                    self.segmentation_matrices[0])
 
     def __probabilities_only_sequence(self):
         self.__preprocess()
@@ -137,7 +135,7 @@ class Segmentation:
             self.images[ind] = np.array(image)
 
         self.padding_width = list()
-        self.padding_hight = list()
+        self.padding_height = list()
 
         for ind, image in enumerate(self.images):
             if self.padding == "keep_last_window":
@@ -146,21 +144,21 @@ class Segmentation:
                         ((CLASSIFIER_WIDTH - image.shape[0]) % CLASSIFIER_WIDTH) / 2
                     )
                 )
-                self.padding_hight.append(
+                self.padding_height.append(
                     math.ceil(
                         ((CLASSIFIER_WIDTH - image.shape[1]) % CLASSIFIER_WIDTH) / 2
                     )
                 )
             else:
                 self.padding_width.append(self.padding)
-                self.padding_hight.append(self.padding)
+                self.padding_height.append(self.padding)
 
         for ind, image in enumerate(self.images):
             self.images[ind] = np.pad(
                 np.array(image),
                 [
                     (self.padding_width[ind], self.padding_width[ind]),
-                    (self.padding_hight[ind], self.padding_hight[ind]),
+                    (self.padding_height[ind], self.padding_height[ind]),
                     (0, 0),
                 ],
                 mode="constant",
@@ -241,13 +239,19 @@ class Segmentation:
             probabilities = np.zeros(
                 (self.images[key].shape[0], self.images[key].shape[1], NUM_CLASSES)
             )
-            for j in range(self.width_n_steps[key] + 1):
-                for k in range(self.height_n_steps[key] + 1):
+            for j in range(self.width_n_steps[key]):
+                for k in range(self.height_n_steps[key]):
+                    print(value[j*self.height_n_steps[key]+k])
                     probabilities[
                         j * self.stride : j * self.stride + CLASSIFIER_WIDTH,
                         k * self.stride : k * self.stride + CLASSIFIER_HEIGHT,
-                    ] += value[j + k]
+                    ] += value[j*self.height_n_steps[key] + k]
             self.segmentation_matrices[key] = np.argmax(probabilities, axis=2)
+
+            if self.padding_width[key] != 0:
+                self.segmentation_matrices[key] = self.segmentation_matrices[key][self.padding_width[key]:-self.padding_width[key], :]
+            if self.padding_height[key] != 0:
+                self.segmentation_matrices[key] = self.segmentation_matrices[key][:, self.padding_height[key]:-self.padding_height[key]]
 
     def __get_probabilities(self) -> None:
         """probabilities for deep stroma score as in original paper"""
@@ -280,10 +284,16 @@ class Segmentation:
 
         with torch.no_grad():
             pred = self.model.model(test_dataset).softmax(1)
+
         return pred
 
 
 if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--stride", type=int, default=224)
+    args = parser.parse_args()
+
     if NUM_CLASSES == 9:
         segment = Segmentation(
             fun_checkpoint="version_1884922/checkpoints/epoch=9-step=3130.ckpt",
@@ -293,10 +303,12 @@ if __name__ == "__main__":
     if NUM_CLASSES == 5:
         segment = Segmentation(
             fun_checkpoint="/cluster/scratch/kkapusniak/version_2648177/checkpoints/last.ckpt",
-            stride=28,
+            stride=args.stride,
             normalise=True,
         )
         segment.segment_PATH(
             folder_location="/cluster/scratch/kkapusniak/WSS2-v1/test",
             save_location="/cluster/scratch/kkapusniak/",
         )
+
+
