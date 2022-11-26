@@ -10,11 +10,10 @@ SLIDES_PATH = "data/TCGA_processed"
 if __name__ == "__main__":
     np.random.seed(1)
 
-    df = pd.read_excel(TABULAR_PATH)
+    df = pd.read_excel(TABULAR_PATH, index_col="ID")
 
     # Exclude columns that are manually labeled by experts
     cols = [
-        "ID",
         "ADI",
         "BACK",
         "DEB",
@@ -31,7 +30,7 @@ if __name__ == "__main__":
     ]
     df = df[cols]
 
-    patient_ids = df["ID"].to_numpy()
+    patient_ids = df.index.to_numpy()
     slide_filenames = os.listdir(SLIDES_PATH)
     patient_slide_map = {}
     for patient_id in patient_ids:
@@ -43,27 +42,25 @@ if __name__ == "__main__":
         patient_slide_map[patient_id] = [
             os.path.join(SLIDES_PATH, name) for name in matching_slides
         ]
-    df = df[df["ID"].isin(patient_slide_map.keys())].reset_index(drop=True)
+    df = df[df.index.isin(patient_slide_map.keys())]
+    patient_slide_map = pd.DataFrame(
+        [[v] for v in patient_slide_map.values()],
+        index=patient_slide_map.keys(),
+        columns=["slide_paths"],
+    )
+    df = df.join(patient_slide_map, how="inner")
 
     df["gender"] = df["gender"].replace({"male": 0, "female": 1})
     df["years_to_birth"] = df["years_to_birth"].fillna(-1)
-
-    X = df.loc[:, ~df.columns.isin(["days_to_event", "vital_status"])]
-    y = df[["ID", "vital_status", "days_to_event"]]
-    y = y.astype({'vital_status': bool})
+    df = df.astype({"vital_status": bool})
 
     n = df.shape[0]
     perm = np.random.permutation(n)
+    i_train = perm[: int(0.8 * n)]
+    i_test = np.setdiff1d(perm, i_train)
 
-    X_train = X[X.index.isin(perm[: int(0.8 * n)])]
-    X_test = X[~X.index.isin(perm[: int(0.8 * n)])]
-    y_train = y[y.index.isin(perm[: int(0.8 * n)])]
-    y_test = y[~y.index.isin(perm[: int(0.8 * n)])]
+    df_train = df.iloc[i_train]
+    df_test = df.iloc[i_test]
 
-    X_train.to_pickle("data/TCGA_X_train.pkl")
-    y_train.to_pickle("data/TCGA_y_train.pkl")
-    X_test.to_pickle("data/TCGA_X_test.pkl")
-    y_test.to_pickle("data/TCGA_y_test.pkl")
-
-    with open("data/TCGA_patient_slide_map.pkl", "wb") as f:
-        pickle.dump(patient_slide_map, f)
+    df_train.to_pickle("data/TCGA_train.pkl")
+    df_test.to_pickle("data/TCGA_test.pkl")

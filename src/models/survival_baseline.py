@@ -3,12 +3,33 @@ import pandas as pd
 from sksurv.metrics import concordance_index_censored
 from sksurv.linear_model import CoxPHSurvivalAnalysis
 
+X_cols = [
+    "ADI",
+    "BACK",
+    "DEB",
+    "LYM",
+    "MUC",
+    "MUS",
+    "NORM",
+    "STR",
+    "TUM",
+    "years_to_birth",
+    "gender",
+]
+
+y_cols = [
+    "vital_status",
+    "days_to_event",
+]
 
 if __name__ == "__main__":
-    X_train = pd.read_pickle("data/TCGA_X_train.pkl")
-    y_train = pd.read_pickle("data/TCGA_y_train.pkl")
-    X_test = pd.read_pickle("data/TCGA_X_test.pkl")
-    y_test = pd.read_pickle("data/TCGA_y_test.pkl")
+    df_train = pd.read_pickle("data/TCGA_train.pkl")
+    df_test = pd.read_pickle("data/TCGA_test.pkl")
+
+    X_train = df_train.loc[:, X_cols]
+    y_train = df_train.loc[:, y_cols]
+    X_test = df_test.loc[:, X_cols]
+    y_test = df_test.loc[:, y_cols]
 
     y_train = y_train.set_index("vital_status").to_records(
         index_dtypes={"vital_status": "?"},

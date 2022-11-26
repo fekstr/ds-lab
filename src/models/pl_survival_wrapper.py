@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, List
 from argparse import ArgumentParser
 
 import torch
@@ -24,22 +24,22 @@ class PLSurvivalWrapper(pl.LightningModule):
         parser.add_argument("--weight_decay", type=float, default=1e-5)
 
     def training_step(
-        self, batch: Tuple[Tensor, Tensor, Tensor], batch_idx: int
+        self, batch: Tuple[Tensor, Tensor, Tensor, Tensor], batch_idx: int
     ) -> Tensor:
-        image, event_indicator, days_to_event = batch
+        image, tabular, event_indicator, days_to_event = batch
 
-        pred_risk = self.model(image)
+        pred_risk = self.model(image, tabular)
         loss = self.loss(pred_risk, event_indicator, days_to_event)
 
         self.log("train_loss", loss)
         return loss
 
     def validation_step(
-        self, batch: Tuple[Tensor, Tensor, Tensor], batch_idx: int
+        self, batch: Tuple[Tensor, Tensor, Tensor, Tensor], batch_idx: int
     ) -> Tensor:
-        image, event_indicator, days_to_event = batch
+        image, tabular, event_indicator, days_to_event = batch
 
-        pred_risk = self.model(image)
+        pred_risk = self.model(image, tabular)
         loss = self.loss(pred_risk, event_indicator, days_to_event)
 
         (
@@ -53,8 +53,34 @@ class PLSurvivalWrapper(pl.LightningModule):
         )
 
         self.log("val_loss", loss)
-        self.log("C-index", c_index)
+        self.log("val_c_index", c_index)
         return loss
+
+    def test_step(
+        self, batch: Tuple[Tensor, Tensor, Tensor, Tensor], batch_idx: int
+    ) -> Tuple[Tensor, Tensor, Tensor]:
+        image, tabular, event_indicator, days_to_event = batch
+
+        pred_risk = self.model(image, tabular)
+
+        return pred_risk, event_indicator, days_to_event
+
+    def test_epoch_end(self, batches: List[Tuple[Tensor, Tensor, Tensor]]) -> None:
+        pred_risk = torch.cat([batch[0] for batch in batches])
+        event_indicator = torch.cat([batch[1] for batch in batches])
+        days_to_event = torch.cat([batch[2] for batch in batches])
+
+        (
+            c_index,
+            n_concordant,
+            n_discordant,
+            n_tied_risk,
+            n_tied_time,
+        ) = concordance_index_censored(
+            event_indicator, days_to_event, pred_risk.squeeze()
+        )
+
+        self.log("test_c_index", c_index)
 
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(

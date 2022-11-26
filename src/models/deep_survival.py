@@ -1,4 +1,5 @@
 import torch
+from torch import Tensor
 from torch import nn
 from torch.nn import functional as F
 from torchvision.models import (
@@ -7,42 +8,48 @@ from torchvision.models import (
 )
 
 
+class ImageFeaturizer(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.backbone = resnet50(ResNet50_Weights.DEFAULT)
+        self.backbone = nn.Sequential(*list(self.backbone.children())[:-1])
+
+    def forward(self, x):
+        return self.backbone(x)
+
+
 class DeepSurvivalModel(nn.Module):
     def __init__(self):
         super().__init__()
+        self.img_featurizer = ImageFeaturizer()
+        self.img_proj = nn.Linear(2048, 64)
 
-        self.backbone = resnet50(ResNet50_Weights.DEFAULT)
-        fc_in_features = self.backbone.fc.in_features
-        self.backbone.fc = nn.Linear(fc_in_features, 1)
+        self.mlp = nn.Sequential(
+            nn.Linear(66, 128),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(128, 128),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(128, 1),
+        )
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(self, img: Tensor, tabular: Tensor) -> Tensor:
         """Compute the forward pass
 
         Args:
-          x: image tensor of shape (B, C, W, H)
+          img: image tensor of shape (B, C, W, H)
 
         Returns:
           Predicted log-risk (B, 1)
         """
 
-        x = self.backbone(x)
-        x = F.logsigmoid(x)
-        return x
+        img_feat = self.img_featurizer(img)
+        img_feat = img_feat.squeeze()
+        img_proj = self.img_proj(img_feat)
+        x = torch.cat([img_proj, tabular[:, -2:]], dim=1)
+        x = self.mlp(x)
 
+        pred_log_risk = F.logsigmoid(x)
 
-class SurvivalLoss(nn.Module):
-    def __init__(self):
-        super().__init__()
-
-    def forward(self, pred, gt_indicator, gt_time):
-        B = pred.shape[0]
-        N = gt_indicator.sum()
-        event_preds = pred[gt_indicator]
-        risk_sets = gt_time.unsqueeze(0).repeat(B, 1) > gt_time.unsqueeze(0).T
-        risk_sets = risk_sets[gt_indicator]
-        risk_preds = torch.zeros((N, B))
-        risk_preds[risk_sets] = torch.exp(pred).T.repeat(N, 1)[risk_sets]
-        logsum = torch.log(risk_preds.sum(dim=1))
-        log_partial_lhood = (event_preds.squeeze() - logsum).mean()
-
-        return -log_partial_lhood
+        return pred_log_risk

@@ -9,21 +9,21 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 from sklearn.model_selection import train_test_split
 
 from src.survival_dataset import SurvivalDataset
-from src.models.deep_survival import DeepSurvivalModel, SurvivalLoss
+from src.models.deep_survival import DeepSurvivalModel
+from src.models.mlp_survival import MLPSurvivalModel
 from src.models.pl_survival_wrapper import PLSurvivalWrapper
+from src.losses.survival_loss import SurvivalLoss
 
 
-def get_dataloaders(data_path: str, patient_slide_map_path: str, batch_size: int):
-    y_train = pd.read_pickle(data_path)
-    with open(patient_slide_map_path, "rb") as f:
-        patient_slide_map = pickle.load(f)
+def get_dataloaders(data_path: str, batch_size: int):
+    df_train = pd.read_pickle(data_path)
 
-    y_train, y_val = train_test_split(
-        y_train, test_size=0.1, stratify=y_train["vital_status"]
+    df_train, df_val = train_test_split(
+        df_train, test_size=0.1, stratify=df_train["vital_status"]
     )
 
-    train_dataset = SurvivalDataset(y_train, patient_slide_map)
-    val_dataset = SurvivalDataset(y_val, patient_slide_map)
+    train_dataset = SurvivalDataset(df_train)
+    val_dataset = SurvivalDataset(df_val)
     train_dataloader = DataLoader(
         train_dataset,
         batch_size=batch_size,
@@ -44,13 +44,10 @@ if __name__ == "__main__":
     PLSurvivalWrapper.add_model_specific_args(parser)
     pl.Trainer.add_argparse_args(parser)
     parser.add_argument("--data_path", type=str)
-    parser.add_argument("--patient_slide_map_path", type=str)
     parser.add_argument("--batch_size", type=int)
     args = parser.parse_args()
 
-    train_dataloader, val_dataloader = get_dataloaders(
-        args.data_path, args.patient_slide_map_path, args.batch_size
-    )
+    train_dataloader, val_dataloader = get_dataloaders(args.data_path, args.batch_size)
 
     dict_args = vars(args)
     model = PLSurvivalWrapper(DeepSurvivalModel(), SurvivalLoss(), **dict_args)
