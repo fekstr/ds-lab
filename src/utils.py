@@ -4,6 +4,7 @@ import pathlib
 from torch.utils.data import DataLoader, random_split
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
+import numpy as np
 
 from statistics import mode
 from src.patch_dataset import PatchDataset
@@ -27,7 +28,7 @@ def train_model(
     val_loader = DataLoader(val_ds, batch_size=val_batch_size, shuffle=False)
 
     if saved_models_path is None:
-        raise ValueError('saved_models_path is a required argument')
+        raise ValueError("saved_models_path is a required argument")
 
     use_gpu = torch.cuda.is_available()
 
@@ -43,3 +44,11 @@ def train_model(
     trainer.fit(model=model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
     return model
+
+
+def specificity(y_true, y_pred):
+    TN = np.sum(np.logical_and(y_pred == 0, y_true == 0))
+
+    N = len(y_true) - np.sum(y_true)
+
+    return TN / N

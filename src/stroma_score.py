@@ -2,49 +2,107 @@ import pandas as pd
 import os
 import sys
 import numpy as np
+from lifelines import CoxPHFitter
+from sklearn.metrics import recall_score
+from src.utils import specificity
+
 
 def calculate_stroma_score(data_dir):
     df = pd.read_excel(data_dir)
 
     x = df.to_numpy()
-    x[:,-1] = x[:,-1] / 365.35 # convert 'days to event' to 'years to event'
-    x[:,11] = x[:,11] / 10 # convert 'years to birth' to 'decades to birth'
-    x = np.append(x, np.zeros((500,1)), axis=1) # add column for HD score
+    x[:, -1] = x[:, -1] / 365.35  # convert 'days to event' to 'years to event'
+    x[:, 11] = x[:, 11] / 10  # convert 'years to birth' to 'decades to birth'
+    x = np.append(x, np.zeros((500, 1)), axis=1)  # add column for HD score
 
     # Calculate allWeights
-    classes_col = ["ADI","BACK", "DEB", "LYM", "MUC","MUS", "NORM", "STR","TUM"]
-    df["years_to_event"] = df["days_to_event"]/365.25 # convert 'days to event' to 'years to event'
-    df["decades_to_birth"] = df["years_to_birth"]/10 # convert 'years to birth' to 'decades to birth'
-    y = df[["years_to_event","vital_status"]]
+    classes_col = ["ADI", "BACK", "DEB", "LYM", "MUC", "MUS", "NORM", "STR", "TUM"]
+    df["years_to_event"] = (
+        df["days_to_event"] / 365.25
+    )  # convert 'days to event' to 'years to event'
+    df["decades_to_birth"] = (
+        df["years_to_birth"] / 10
+    )  # convert 'years to birth' to 'decades to birth'
+    y = df[["years_to_event", "vital_status"]]
 
-    cph_models = [CoxPHFitter().fit(pd.concat([df[col], y], axis=1), "years_to_event", "vital_status") for col in classes_col]
+    cph_models = [
+        CoxPHFitter().fit(
+            pd.concat([df[col], y], axis=1), "years_to_event", "vital_status"
+        )
+        for col in classes_col
+    ]
     allWeights = np.array([float(cph.summary["exp(coef)"]) for cph in cph_models])
 
     # Calculate allCuts?
-    allCuts = np.array([0.00056, 0.00227, 0.03151, 0.00121, 0.01123, 0.02359, 0.06405, 0.00122, 0.99961]) # Youden cuts
+    # allCuts = np.array(
+    #     [
+    #         0.00056,
+    #         0.00227,
+    #         0.03151,
+    #         0.00121,
+    #         0.01123,
+    #         0.02359,
+    #         0.06405,
+    #         0.00122,
+    #         0.99961,
+    #     ]
+    # )  # Youden cuts
+
+    allCuts = []
+
+    for i, col_name in enumerate(classes_col):
+        class_score = df[col_name]
+        max_index = 0
+        median = np.median(class_score)
+        for j, score in enumerate(class_score):
+            if j == 0:
+                allCuts.append(score)
+
+            preds = np.greater_equal(class_score, score).astype(int)
+            sens = recall_score(df["vital_status"], preds)
+            spec = specificity(df["vital_status"], preds)
+            if (sens + spec) > max_index:
+                max_index = sens + spec
+                allCuts[i] = score
+            elif sens + spec == max_index:
+                if abs(score - median) < abs(allCuts[i] - median):
+                    allCuts[i] = score
+                    max_index = score
 
     # Calculate stroma score
     scoreIndices = (np.argwhere(allWeights >= 1)).flatten()
     for i in scoreIndices:
-        x[:,-1] = x[:,-1] + (x[:,i+1]>=allCuts[i])*allWeights[i] # +1 retrieve column number in x
-    medianTrainingSet = np.median(x[:,-1])
-    x[:,-1] = (x[:,-1] >= medianTrainingSet)*1
-    stroma_score = x[:,-1]
+        x[:, -1] = (
+            x[:, -1] + (x[:, i + 1] >= allCuts[i]) * allWeights[i]
+        )  # +1 retrieve column number in x
+    medianTrainingSet = np.median(x[:, -1])
+    x[:, -1] = (x[:, -1] >= medianTrainingSet) * 1
+    stroma_score = x[:, -1]
 
-    runs=["All stages", "Stage i", "Stage ii", "Stage iii", "Stage iv"]
+    runs = ["All stages", "Stage i", "Stage ii", "Stage iii", "Stage iv"]
     df["stroma_score"] = stroma_score
 
-    selected_columns = ["stroma_score" ,"cleanstage", "gender", "decades_to_birth" ]
+    selected_columns = ["stroma_score", "cleanstage", "gender", "decades_to_birth"]
     df_mv = df.dropna(subset=["cleanstage", "decades_to_birth"])
-    y_mv = df_mv[["years_to_event","vital_status"]]
+    y_mv = df_mv[["years_to_event", "vital_status"]]
 
-    mv_cox = CoxPHFitter().fit(pd.concat([df_mv[selected_columns], y_mv], axis=1), "years_to_event", "vital_status", formula = "stroma_score + cleanstage + C(gender) +decades_to_birth")
+    mv_cox = CoxPHFitter().fit(
+        pd.concat([df_mv[selected_columns], y_mv], axis=1),
+        "years_to_event",
+        "vital_status",
+        formula="stroma_score + cleanstage + C(gender) +decades_to_birth",
+    )
     # mv_cox.print_summary()
 
     stroma_HR = mv_cox.hazard_ratios_[3]
     lci = np.exp(mv_cox.confidence_intervals_["95% lower-bound"][3])
     hci = np.exp(mv_cox.confidence_intervals_["95% upper-bound"][3])
     p = mv_cox._compute_p_values()[3]
-    print(f"___Deep Stroma Score Hazard Ratio, {runs[0]}___ \n Stroma HR: {stroma_HR}; \n CI: [{lci}, {hci}]; \n p: {p}")
+    print(
+        f"___Deep Stroma Score Hazard Ratio, {runs[0]}___ \n Stroma HR: {stroma_HR}; \n CI: [{lci}, {hci}]; \n p: {p}"
+    )
 
     return stroma_HR, lci, hci, p
+
+
+calculate_stroma_score("../data/TCGA_MEASUREMENTS.xlsx")
