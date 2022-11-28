@@ -24,6 +24,10 @@ ds-lab
 
 
 ```
+
+## Report
+[overleaf](https://www.overleaf.com/4317228738rvbdxvrjjsws)
+
 ## Relevant papers
 [Tissue Type Recognition in Whole Slide Histological Images](http://ceur-ws.org/Vol-3027/paper50.pdf)
 
