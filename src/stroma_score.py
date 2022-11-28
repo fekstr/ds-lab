@@ -9,11 +9,12 @@ from src.utils import specificity
 
 def calculate_stroma_score(data_dir):
     df = pd.read_excel(data_dir)
+    no_cols = len(df)
 
     x = df.to_numpy()
     x[:, -1] = x[:, -1] / 365.35  # convert 'days to event' to 'years to event'
     x[:, 11] = x[:, 11] / 10  # convert 'years to birth' to 'decades to birth'
-    x = np.append(x, np.zeros((500, 1)), axis=1)  # add column for HD score
+    x = np.append(x, np.zeros((no_cols, 1)), axis=1)  # add column for HD score
 
     # Calculate allWeights
     classes_col = ["ADI", "BACK", "DEB", "LYM", "MUC", "MUS", "NORM", "STR", "TUM"]
