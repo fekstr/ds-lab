@@ -56,9 +56,11 @@ ds-lab
 
 #### Numpy matrices for PATH test
 
+[Non-overlapping (stride=224)](https://polybox.ethz.ch/index.php/s/WICjsta2AYO47Lw)
+
 #### Segmentation plots for PATH test
 
-[Images for report](https://polybox.ethz.ch/index.php/s/lv0TIbFs2cfwX3t)
+[All Images for report](https://polybox.ethz.ch/index.php/s/lv0TIbFs2cfwX3t)
 
 #### CSV files for DEEP STROMA score - eqivalent of their excel files
 
