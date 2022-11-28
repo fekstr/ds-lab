@@ -54,6 +54,12 @@ ds-lab
 
 ## Segmentation Results
 
+#### Numpy matrices for PATH test
+
+#### Segmentation plots for PATH test
+
+[Images for report](https://polybox.ethz.ch/index.php/s/lv0TIbFs2cfwX3t)
+
 #### CSV files for DEEP STROMA score - eqivalent of their excel files
 
 [TCGA patients with probabilities averaged](https://polybox.ethz.ch/index.php/s/F800Obkts8TEE6Y)
