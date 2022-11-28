@@ -60,6 +60,8 @@ ds-lab
 
 [Overlapping (stride=112)](https://polybox.ethz.ch/index.php/s/9yCCcGRWJCwSmhO)
 
+[Overlapping (stride=28)](https://polybox.ethz.ch/index.php/s/X5NpfmyrbGyF9u2)
+
 #### Segmentation plots for PATH test
 
 [All Images for report](https://polybox.ethz.ch/index.php/s/lv0TIbFs2cfwX3t)
