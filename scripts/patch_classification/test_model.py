@@ -11,11 +11,11 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--checkpoint-path")
-    parser.add_argument("--test-data-path")
-    parser.add_argument("--saved-models-path")
+    parser.add_argument("--checkpoint-path", required=True)
+    parser.add_argument("--test-data-path", required=True)
+    parser.add_argument("--log-path", required=True)
+    parser.add_argument("--num-classes", type=int, required=True)
     parser.add_argument("--test-batch-size", type=int)
-    parser.add_argument("--num-classes", type=int)
     args = parser.parse_args()
 
     test_paths, test_classes = load_data(args.test_data_path)
@@ -30,5 +30,5 @@ if __name__ == "__main__":
         pretrained_model,
         test_dataset=test_dataset,
         test_batch_size=args.test_batch_size,
-        saved_models_path=args.saved_models_path,
+        log_path=args.log_path,
     )

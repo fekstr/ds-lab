@@ -125,15 +125,14 @@ if __name__ == "__main__":
     ## big image preprocessing (Daniel)
     preprocess = PreprocessingSVS("TCGA-AA-3516.svs")
     preprocess.resize_to_target_mpp()
-    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
     preprocess.normalise()
     preprocess.save()
 
     ## 224x224 image preprocessing (Frithiof)
     parser = argparse.ArgumentParser()
-    parser.add_argument("--type")
-    parser.add_argument("--src")
-    parser.add_argument("--dest")
+    parser.add_argument("--type", help="Class folder name")
+    parser.add_argument("--src", help="Path to source data directory")
+    parser.add_argument("--dest", help="Destination directory")
     args = parser.parse_args()
 
     data_path = args.src

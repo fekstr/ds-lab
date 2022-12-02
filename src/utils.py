@@ -7,6 +7,7 @@ import torch
 import torchvision
 from torch.utils.data import DataLoader, random_split
 import pytorch_lightning as pl
+from pytorch_lightning.loggers import TensorBoardLogger
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 from pytorch_lightning.callbacks import ModelCheckpoint
 from sklearn.model_selection import train_test_split
@@ -21,7 +22,7 @@ def train_model(
     model: pl.LightningModule,
     train_dataset: PatchDataset,
     val_dataset: PatchDataset,
-    saved_models_path: str,
+    log_path: str,
     train_batch_size: int = 32,
     val_batch_size: int = 64,
     max_epochs: int = 10,
@@ -34,8 +35,8 @@ def train_model(
     )
     val_loader = DataLoader(val_dataset, batch_size=val_batch_size, shuffle=False)
 
-    if saved_models_path is None:
-        raise ValueError("saved_models_path is a required argument")
+    if log_path is None:
+        raise ValueError("log_path is a required argument")
 
     use_gpu = torch.cuda.is_available()
 
@@ -43,17 +44,21 @@ def train_model(
         save_top_k=3, monitor="val_loss", mode="min", save_last=True
     )
     early_stopping_cb = EarlyStopping(monitor="val_loss", mode="min")
+    logger = TensorBoardLogger(save_dir=log_path, name="", version="")
 
     trainer = pl.Trainer(
         accelerator="gpu" if use_gpu else "cpu",
         devices=-1 if use_gpu else None,
         max_epochs=max_epochs,
         callbacks=[early_stopping_cb, checkpoint_cb],
-        default_root_dir=saved_models_path,
+        default_root_dir=log_path,
+        logger=logger,
         log_every_n_steps=10,
     )
 
     trainer.fit(model=model, train_dataloaders=train_loader, val_dataloaders=val_loader)
+    best_model_path = '/'.join(checkpoint_cb.best_model_path.split('/')[:-1] + ['best.ckpt'])
+    os.rename(checkpoint_cb.best_model_path, best_model_path)
 
     return model
 
@@ -61,7 +66,7 @@ def train_model(
 def test_model(
     model: pl.LightningModule,
     test_dataset: PatchDataset,
-    saved_models_path: str,
+    log_path: str,
     test_batch_size: int = 64,
 ) -> pl.LightningModule:
     test_loader = DataLoader(
@@ -69,15 +74,18 @@ def test_model(
         batch_size=test_batch_size,
     )
 
-    if saved_models_path is None:
-        raise ValueError("saved_models_path is a required argument")
+    if log_path is None:
+        raise ValueError("log_path is a required argument")
 
     use_gpu = torch.cuda.is_available()
+
+    logger = TensorBoardLogger(save_dir=log_path, name="", version="")
 
     trainer = pl.Trainer(
         accelerator="gpu" if use_gpu else "cpu",
         devices=-1 if use_gpu else None,
-        default_root_dir=saved_models_path,
+        default_root_dir=log_path,
+        logger=logger,
         log_every_n_steps=10,
     )
 
