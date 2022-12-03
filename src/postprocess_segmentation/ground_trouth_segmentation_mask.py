@@ -53,18 +53,18 @@ print('opening slide')
 slideName = os.path.join(datapath, type, f'0{index}.svs')
 slide = openslide.OpenSlide(slideName)
 print('Reading image')
-level = 0
+level = 1
 image = slide.read_region(
                     (0, 0), level, slide.level_dimensions[level]
                 )
 del slide
 print('Done reading image')
-downsampleFactor = 2
+downsampleFactor = 4
 
 new_x = math.floor(image.size[0] / downsampleFactor)
 new_y = math.floor(image.size[1] / downsampleFactor)
 
-image = image.resize((new_x, new_y), PIL.Image.BICUBIC)
+# image = image.resize((new_x, new_y), PIL.Image.BICUBIC)
 
 mask = np.zeros((image.size[1], image.size[0]), dtype=np.int32)
 # mask_pred = np.zeros((image.size[1], image.size[0]), dtype=np.int32)
