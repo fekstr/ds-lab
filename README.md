@@ -26,9 +26,11 @@ ds-lab
 ```
 
 ## Report
+
 [overleaf](https://www.overleaf.com/4317228738rvbdxvrjjsws)
 
 ## Relevant papers
+
 [Tissue Type Recognition in Whole Slide Histological Images](http://ceur-ws.org/Vol-3027/paper50.pdf)
 
 [Predicting survival from colorectal cancer histology slides using deep learning: A retrospective multicenter study](https://journals.plos.org/plosmedicine/article/file?id=10.1371/journal.pmed.1002730&type=printable)
@@ -39,9 +41,18 @@ ds-lab
 
 [PATH-DT-MSU slides](https://imaging.cs.msu.ru/en/research/histology/path-dt-msu)
 
-[Processed slides](https://polybox.ethz.ch/index.php/s/Q4joLEkT8HepwWl)
+Download via command line
+
+```
+wget -O WSS2-v1.zip "https://downloader.disk.yandex.ru/disk/fe33dc2d46e32258d4d0c6aa8b7da62bbbddfad697dc81468ddc44ae7a5eebc9/638b95fd/fKqInKw3d7bLFOeFnMGnhAM2BMzL9eiNqnSmlFhPpUabc7-I5_ENJYdaJ64hLjyo2pjrh4ZbwUROGVvlVQPaGaLlbHiV4NwR6em5mcsuS5Kr8npumZHI4midPdWhecNq?uid=0&filename=WSS2-v1.zip&disposition=attachment&hash=k8z8FrQ/XqhbeBMqOVOEVSbAqNrbfsLWZ51dzBytdv0flGWevP2rJr7diMPOc87vW5aDQ4kMZEXE%2BwNjbq78ug%3D%3D%3A&limit=0&content_type=application%2Fzip&owner_uid=1130000056703611&fsize=20938883225&hid=90683e66eeabc6626744a7c43937c80c&media_type=compressed&tknv=v2"  -q --show-progress
+```
+
+[Processed TCGA slides](https://polybox.ethz.ch/index.php/s/g9pXo8JraNZIdNx)
+
+[PATH slides to patches](https://polybox.ethz.ch/index.php/s/eAGHwpMehXX0Rrg)
 
 ### Normalized patches
+
 [PATH-DT-MSU-TRAIN](https://polybox.ethz.ch/index.php/s/hzLxnW3Lb64V7UA/download)
 
 [PATH-DT-MSU-TEST](https://polybox.ethz.ch/index.php/s/GOl8C9ONgDdxvBr/download)
