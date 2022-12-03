@@ -16,6 +16,7 @@ if hasattr(os, 'add_dll_directory'):
         import openslide
 else:
     import openslide
+import matplotlib
 
 classLabels = {
     'AT': 1,
@@ -44,12 +45,12 @@ def iouScore(mask1, mask2):
 
 groundTruthPath = sys.argv[1]
 predictedPath = sys.argv[2]
-outputFolder = sys.argv[3]
 
 print("Calculating IoU for ", groundTruthPath, " and ", predictedPath)
 
 groundTruh = np.load(groundTruthPath)
 predicted = np.load(predictedPath)
+predicted = predicted + 1 # So that labels match
 
 print("Ground truth shape: ", groundTruh.shape)
 print("Predicted shape: ", predicted.shape)
@@ -57,4 +58,11 @@ iou = calcualteIouPerClass(groundTruh, predicted)
 
 print("IOU ", iou)
 
+# print('Showing image')
+
+# f, axarr = plt.subplots(2,2)
+# axarr[0, 0].imshow(groundTruh)
+# # axarr[0, 1].imshow(predicted)
+
+# plt.show()
 
