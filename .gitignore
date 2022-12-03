@@ -135,3 +135,4 @@ data
 scratch
 saved_models
 slurm_logs
+logs
