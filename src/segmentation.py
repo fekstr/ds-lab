@@ -103,12 +103,20 @@ class Segmentation:
 
                 slide = openslide.OpenSlide(folder_location + "/" + filename)
 
-                self.images = [
-                    slide.read_region((0, 0), 1, slide.level_dimensions[1]).convert(
+                level = 0
+                image = slide.read_region((0, 0), level, slide.level_dimensions[level]).convert(
                         "RGB"
                     )
-                ]
                 del slide
+
+                downsampleFactor = 2
+
+                new_x = math.floor(image.size[0]/downsampleFactor)
+                new_y = math.floor(image.size[1]/downsampleFactor)
+
+                image = image.resize((new_x, new_y), PIL.Image.BICUBIC)
+
+                self.images = [image]
                 self.__segmentation_only_sequence()
 
                 np.save(save_location
