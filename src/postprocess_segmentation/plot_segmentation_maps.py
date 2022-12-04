@@ -5,6 +5,7 @@ import openslide
 import matplotlib
 from segmentation_mask_overlay import overlay_masks
 import PIL
+import math
 
 LEVEL = 0
 
