@@ -4,8 +4,9 @@ import numpy as np
 import openslide
 import matplotlib
 from segmentation_mask_overlay import overlay_masks
+import PIL
 
-LEVEL = 1
+LEVEL = 0
 
 
 class plotSegmentation:
@@ -29,11 +30,16 @@ class plotSegmentation:
                 print("image ", filename)
 
                 slide = openslide.OpenSlide(self.original_folder + "/" + filename)
-                original_dimensions = slide.level_dimensions[1]
                 image = slide.read_region(
                     (0, 0), LEVEL, slide.level_dimensions[LEVEL]
                 ).convert("RGB")
                 del slide
+
+                downsampleFactor = 2
+
+                new_x = math.floor(image.size[0]/downsampleFactor)
+                new_y = math.floor(image.size[1]/downsampleFactor)
+                image = image.resize((new_x, new_y), PIL.Image.BICUBIC)
 
                 for _, source_filename in enumerate(os.listdir(self.source_folder)):
                     if source_filename.split("_")[0] == filename.split(".")[0]:
