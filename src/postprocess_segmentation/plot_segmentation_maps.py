@@ -55,7 +55,7 @@ class plotSegmentation:
 
 if __name__ == "__main__":
     plotSegmentation(
-        "./WSS2-v1/test",
-        "./WSS2_nonoverlapping_segmentation",
-        "./WSS2_nonoverlapping_segmentation_plots",
+        "/cluster/scratch/kkapusniak/WSS2-v1/test",
+        "/cluster/scratch/kkapusniak/112_seg_map",
+        "/cluster/scratch/kkapusniak/plots",
     )

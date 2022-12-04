@@ -114,9 +114,9 @@ class Segmentation:
                 new_x = math.floor(image.size[0]/downsampleFactor)
                 new_y = math.floor(image.size[1]/downsampleFactor)
 
-                image = image.resize((new_x, new_y), PIL.Image.BICUBIC)
+                self.images = [image.resize((new_x, new_y), PIL.Image.BICUBIC)]
+                del image
 
-                self.images = [image]
                 self.__segmentation_only_sequence()
 
                 np.save(save_location
