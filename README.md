@@ -75,7 +75,7 @@ wget -O WSS2-v1.zip "https://downloader.disk.yandex.ru/disk/fe33dc2d46e32258d4d0
 
 #### Segmentation plots for PATH test
 
-[All Images for report](https://polybox.ethz.ch/index.php/s/lv0TIbFs2cfwX3t)
+[All Images for report](https://polybox.ethz.ch/index.php/s/sKvRP7UBLbdl6uI)
 
 #### CSV files for DEEP STROMA score - eqivalent of their excel files
 
