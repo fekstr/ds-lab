@@ -57,6 +57,8 @@ print("Predicted shape: ", predicted.shape)
 iou = calcualteIouPerClass(groundTruh, predicted)
 
 print("IOU ", iou)
+print("Mean IOU ", np.mean(list(iou.values())))
+print("Standard deviation ", np.std(list(iou.values())))
 
 # print('Showing image')
 
