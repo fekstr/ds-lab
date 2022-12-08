@@ -67,11 +67,11 @@ wget -O WSS2-v1.zip "https://downloader.disk.yandex.ru/disk/fe33dc2d46e32258d4d0
 
 #### Numpy matrices for PATH test
 
-[Non-overlapping (stride=224)](https://polybox.ethz.ch/index.php/s/mVQA4SZcGgWRqaB)
+[Non-overlapping (stride=224)](https://polybox.ethz.ch/index.php/s/m3GHWyVELXprBt5)
 
 [Overlapping (stride=112)](https://polybox.ethz.ch/index.php/s/WYFPf3kv24bhx8W)
 
-[Overlapping (stride=28)](https://polybox.ethz.ch/index.php/s/X5NpfmyrbGyF9u2)
+[Overlapping (stride=28)](https://polybox.ethz.ch/index.php/s/mVQA4SZcGgWRqaB)
 
 #### Segmentation plots for PATH test
 
